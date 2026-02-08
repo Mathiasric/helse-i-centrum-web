@@ -6,7 +6,7 @@ const therapists = getTherapists();
 
 export function TherapistsPreview() {
   return (
-    <section className="bg-gray-50 py-16 sm:py-20" aria-labelledby="terapeuter-heading">
+    <section className="bg-gray-50 py-14 sm:py-16" aria-labelledby="terapeuter-heading">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="terapeuter-heading" className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
           Våre terapeuter

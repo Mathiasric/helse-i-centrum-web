@@ -5,9 +5,9 @@ const clinic = getClinic();
 
 export function ClinicSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-14 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-start">
           <div className="relative aspect-[16/10] overflow-hidden rounded-xl sm:aspect-[4/3]">
             <Image
               src="/content/image/venterom_v2.png"

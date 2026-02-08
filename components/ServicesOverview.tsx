@@ -15,7 +15,7 @@ const clinic = getClinic();
 
 export function ServicesOverview() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="bg-white py-14 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
           Tjenester
