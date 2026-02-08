@@ -42,6 +42,14 @@ export function Footer() {
             >
               {clinic.contact.phoneDisplay}
             </a>
+            {clinic.contact.email && (
+              <a
+                href={`mailto:${clinic.contact.email}`}
+                className={`text-sm text-slate-100 hover:underline w-fit transition ${focusRing} px-0.5 py-0.5`}
+              >
+                {clinic.contact.email}
+              </a>
+            )}
             <p className="text-sm text-slate-300">
               {clinic.location.addressLine1}
               <br />

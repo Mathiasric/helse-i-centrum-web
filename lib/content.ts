@@ -12,6 +12,7 @@ export interface ClinicLocation {
 export interface ClinicContact {
   phoneDisplay: string;
   phoneE164: string;
+  email?: string;
 }
 
 export interface ClinicMap {

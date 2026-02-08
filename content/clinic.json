@@ -11,7 +11,8 @@
     },
     "contact": {
       "phoneDisplay": "55 90 06 80",
-      "phoneE164": "+4755900680"
+      "phoneE164": "+4755900680",
+      "email": "hicbergen@gmail.com"
     },
     "map": {
       "googleMapsQuery": "Markeveien 4C, 5012 Bergen"

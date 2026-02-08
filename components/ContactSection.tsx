@@ -53,6 +53,18 @@ export function ContactSection() {
                   {clinic.contact.phoneDisplay}
                 </a>
               </div>
+              {/* E-post */}
+              {clinic.contact.email && (
+                <div className="mt-2 space-y-0.5">
+                  <p className="text-[11px] font-medium uppercase tracking-wider text-gray-400">E-post</p>
+                  <a
+                    href={`mailto:${clinic.contact.email}`}
+                    className={`block text-[13px] font-medium text-primary-600 underline underline-offset-2 hover:text-primary-700 ${focusRing}`}
+                  >
+                    {clinic.contact.email}
+                  </a>
+                </div>
+              )}
               {/* Adkomst – én linje med punktum; "Se veibeskrivelse" er lenke til Google Maps Directions */}
               {clinic.adkomst && clinic.adkomst.length > 0 && (
                 <div className="mt-2 space-y-0.5">
