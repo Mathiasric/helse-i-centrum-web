@@ -70,7 +70,6 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
     );
   }
 
-  const previewTitle = "Fysioterapeut";
   const previewDescription = "Les mer om kompetanse og behandlingstilbud.";
 
   return (
@@ -91,7 +90,7 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
       </div>
       <div className="flex flex-1 flex-col p-3 pt-2">
         <h3 className="text-lg font-bold text-gray-900">{therapist.name}</h3>
-        <p className="mt-0.5 text-primary-600">{previewTitle}</p>
+        <p className="mt-0.5 text-primary-600">{therapist.role}</p>
         <p className="mt-1 text-sm text-gray-600">{previewDescription}</p>
         <div className="mt-auto pt-3">
           <div className="flex flex-wrap items-center gap-1.5">
