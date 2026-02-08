@@ -26,12 +26,12 @@ export function BookingSheet({ open, onClose }: BookingSheetProps) {
   return (
     <>
       <div
-        className="fixed inset-0 z-40 bg-black/40 md:hidden"
+        className="fixed inset-0 z-[100] bg-black/40 md:hidden"
         aria-hidden="true"
         onClick={onClose}
       />
       <div
-        className="fixed inset-x-0 bottom-0 z-50 rounded-t-xl border-t border-gray-200 bg-white shadow-xl md:hidden"
+        className="fixed inset-x-0 bottom-0 z-[101] rounded-t-xl border-t border-gray-200 bg-white shadow-xl md:hidden"
         aria-modal="true"
         aria-label="Bestill time"
       >
