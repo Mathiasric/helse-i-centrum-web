@@ -1,0 +1,82 @@
+{
+    "name": "Helse i Centrum",
+    "alternateName": "Centrum Fysioterapi",
+    "type": "PhysiotherapyClinic",
+    "location": {
+      "addressLine1": "Markeveien 4C",
+      "postalCode": "5012",
+      "city": "Bergen",
+      "municipality": "Bergen kommune",
+      "country": "Norge"
+    },
+    "contact": {
+      "phoneDisplay": "55 90 06 80",
+      "phoneE164": "+4755900680"
+    },
+    "map": {
+      "googleMapsQuery": "Markeveien 4C, 5012 Bergen"
+    },
+    "openingHours": "Mandag–fredag: 08:00–18:00",
+    "adkomst": [
+      "Sentralt i Bergen sentrum",
+      "Nær kollektivtransport",
+      "Enkel adkomst"
+    ],
+    "summary": "Helse i Centrum er en fysioterapiklinikk med kommunal driftsavtale i Bergen. Klinikken tilbyr undersøkelse, behandling og rehabilitering av muskel- og skjelettplager, med kompetanse innen manuellterapi og allmennfysioterapi.",
+    "therapistsPageIntro": "Våre terapeuter har bred kompetanse innen manuellterapi og allmennfysioterapi. Vi tilbyr undersøkelse, behandling og rehabilitering av muskel- og skjelettplager.",
+    "services": [
+      {
+        "name": "Manuellterapi",
+        "description": "Håndgrep og manuelle teknikker for bedre bevegelighet og mindre smerter i muskel- og skjelettplager."
+      },
+      {
+        "name": "Allmennfysioterapi",
+        "description": "Undersøkelse, behandling og rehabilitering – fra akutte skader til langvarige plager."
+      },
+      {
+        "name": "Muskel- og skjelettplager",
+        "description": "Rygg, nakke, skulder, hofte, kne og andre ledd. Tiltak som reduserer smerte og forbedrer funksjon."
+      },
+      {
+        "name": "Rehabilitering etter skade & operasjon",
+        "description": "Strukturert opptrening etter ortopediske skader/inngrep med tett oppfølging og progresjon."
+      },
+      {
+        "name": "Opptrening & funksjonsforbedring",
+        "description": "Treningsopplegg tilpasset mål: styrke, mobilitet, balanse og kontroll – tilbake til aktivitet."
+      },
+      {
+        "name": "Akutte & langvarige smerter",
+        "description": "Individuell vurdering og plan for både nye og vedvarende smerter – med fokus på varig bedring."
+      }
+    ],
+    "agreements": [
+      {
+        "name": "Kommunal driftsavtale",
+        "description": "Klinikken har kommunalt driftstilskudd gjennom Bergen kommune."
+      }
+    ],
+    "practicalInfo": {
+      "referral": "Henvisning ikke oppgitt.",
+      "pricing": "Priser/egenandel ikke oppgitt.",
+      "refund": "Refusjon/frikort ikke oppgitt."
+    },
+    "therapistsMentionedFromSource": [
+      {
+        "name": "Eirik Østvold",
+        "areas": ["Manuellterapeut", "Allmennfysioterapi"]
+      },
+      {
+        "name": "Kjartan Fersum",
+        "areas": ["Manuellterapeut"]
+      },
+      {
+        "name": "Anine Vibe Simonsen",
+        "areas": ["Manuellterapeut", "Kvinnehelse"]
+      }
+    ],
+    "notes": [
+      "Nettsiden skal i første omgang fokusere på 2 terapeuter (studentene). De øvrige terapeutene skal ikke profileres i MVP."
+    ]
+  }
+  

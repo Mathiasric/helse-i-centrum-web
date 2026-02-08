@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+Prefer server components og statisk rendering der mulig.
+
+Bilder via Next Image med riktige størrelser.
+
+Minimal JS på klient, ingen tunge libs uten grunn.
+
+Målet er “snappy” følelse på mobil.

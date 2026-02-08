@@ -1,0 +1,60 @@
+{
+  "therapists": [
+    {
+      "id": "magnus-richardsen",
+      "name": "Magnus Richardsen",
+      "bookingUrl": "https://helse-i-centrum.praktis.no/booking/magnus",
+      "role": "Fysioterapeut under videreutdanning i manuellterapi",
+      "agreement": "Kommunal driftsavtale",
+      "education": [
+        "Bachelor i fysioterapi, Tromsø",
+        "Videreutdanning i klinisk fysioterapi, Bergen"
+      ],
+      "specialization": [
+        "Muskel- og skjelettlidelser",
+        "Revmatiske helseproblemer",
+        "Ortopediske helseproblemer"
+      ],
+      "professionalProfile": "Fysioterapeut under videreutdanning som manuellterapeut med kommunal avtale. Utdannet fysioterapeut i Tromsø. Videreutdanning i klinisk fysioterapi i Bergen, med spesialisering innen muskel- og skjelettlidelser samt revmatiske og ortopediske helseproblemer. Publisert fagartikkel om skuldersmerter. Bruker Aktiv-A og kombinerer ulike behandlingsteknikker, aktive tiltak og helserelatert veiledning for diagnostisering, behandling og rehabilitering av muskel- og skjelettplager.",
+      "methods": [
+        "Aktiv-A",
+        "Aktive tiltak",
+        "Manuelle behandlingsteknikker",
+        "Veiledning og rehabilitering"
+      ],
+      "focusAreas": [
+        "Skuldersmerter",
+        "Muskel- og skjelettplager",
+        "Rehabilitering"
+      ],
+      "image": "/team/magnus-richardsen.jpg"
+    },
+    {
+      "id": "marcus-smavik-dasa",
+      "name": "Marcus Småvik Dasa",
+      "bookingUrl": "https://helse-i-centrum.praktis.no/booking/marcus",
+      "role": "Fysioterapeut i spesialisering i manuellterapi",
+      "agreement": "Kommunal driftsavtale",
+      "education": [
+        "Mastergrad i fysioterapivitenskap",
+        "Doktorgrad i helsevitenskap"
+      ],
+      "experience": [
+        "Privat fysioterapi",
+        "Kommunal fysioterapi",
+        "Olympiatoppen"
+      ],
+      "summary": "Erfaring fra privat og kommunal fysioterapi, spesielt muskel- og skjelettplager og idrettsskader.",
+      "professionalProfile": "Marcus er fysioterapeut i spesialisering som manuellterapeut, med erfaring fra både privat og kommunal fysioterapi. Han har bred kompetanse innen muskel- og skjelettplager, samt idrettsskader. Marcus har en mastergrad i fysioterapivitenskap og en doktorgrad i helsevitenskap. Han jobber også ved Olympiatoppen med ansvar innen styrke/kraft, ernæring og forskning.",
+      "focusAreas": [
+        "Muskel- og skjelettplager",
+        "Idrettsskader",
+        "Styrke og kraft"
+      ],
+      "additionalRoles": [
+        "Olympiatoppen – styrke/kraft, ernæring og forskning"
+      ],
+      "image": "/team/marcus-smavik-dasa.jpg"
+    }
+  ]
+}

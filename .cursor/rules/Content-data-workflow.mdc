@@ -1,0 +1,9 @@
+---
+alwaysApply: true
+---
+
+All tekst og data hentes fra /content (JSON/TS-objects).
+
+UI-komponenter leser data, de eier ikke teksten.
+
+Strukturér content slik at nye terapeuter/sider kan legges til uten å endre layout-kode.

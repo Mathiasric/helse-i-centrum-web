@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+Hold filstruktur ryddig: /app, /components, /content, /lib, /public.
+
+Skriv lesbar, enkel TypeScript med tydelige typer (ingen “any”).
+
+Gjenbruk komponenter når det gir verdi, men unngå overabstraksjon.
+
+Fjern dødkode og ubrukte imports umiddelbart.

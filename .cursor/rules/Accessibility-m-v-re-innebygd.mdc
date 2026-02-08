@@ -1,0 +1,9 @@
+---
+alwaysApply: true
+---
+
+Semantisk HTML først (header/nav/main/footer, buttons, labels).
+
+Alt-tekst på bilder, tastaturnavigasjon og synlig fokus.
+
+Kontrast og tekststørrelse prioriteres (mobil først).

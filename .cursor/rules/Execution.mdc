@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+Start alltid med en kort plan (3–7 bullets) før du endrer noe.
+
+Jobb i små, komplette steg: implementér → verifisér → gå videre.
+
+Gjør endringer som kompilerer og kjører etter hvert steg. Ingen halvferdig rot.
+
+Når du er usikker mellom to valg: velg enkleste løsning som gir høy kvalitet.

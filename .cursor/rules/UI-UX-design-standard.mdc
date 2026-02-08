@@ -1,0 +1,25 @@
+---
+alwaysApply: true
+---
+
+Design skal være klinisk, rolig, premium (helseklinikk).
+
+Bruk konsekvent: 1 primær CTA, 1 sekundær CTA per side.
+
+All kritisk info skal være synlig innen første skjerm på mobil:
+
+Hva dette er
+
+Hvem det er for
+
+Hva brukeren gjør nå (CTA)
+
+Layout: maks 2–3 hovedseksjoner på forsiden, korte blokker, mye luft.
+
+Komponenter skal følge et fast system:
+
+Container bredde + spacing tokens
+
+Konsistente headings (H1/H2/H3)
+
+Konsekvent knappestil og hover/focus states
