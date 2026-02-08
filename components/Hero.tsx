@@ -32,10 +32,10 @@ export function Hero() {
         <p className="mt-2 text-lg text-white/90 sm:text-xl">
           {clinic.location.city}
         </p>
-        <p className="mt-4 max-w-xl text-base text-white/90">
-          {clinic.summary} Sentral beliggenhet i Bergen sentrum – kort vei fra kollektivtransport.
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
+          {clinic.heroShortIntro ?? `${clinic.summary} Sentral beliggenhet i Bergen sentrum – kort vei fra kollektivtransport.`}
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+        <div className="mt-6 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:gap-4">
           <Link
             href="/terapeuter"
             className={`inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
@@ -44,7 +44,7 @@ export function Hero() {
           </Link>
           <a
             href={phoneHref}
-            className={`inline-flex items-center justify-center rounded-lg border-2 border-white px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10 ${focusRing}`}
+            className={`inline-flex items-center justify-center rounded-lg border border-white/80 bg-white/5 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10 ${focusRing}`}
           >
             Ring
           </a>

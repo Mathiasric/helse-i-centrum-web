@@ -36,6 +36,8 @@ export interface Clinic {
   contact: ClinicContact;
   map: ClinicMap;
   summary: string;
+  heroShortIntro?: string;
+  whatToExpect?: string[];
   therapistsPageIntro?: string;
   services: ClinicService[];
   agreements?: ClinicAgreement[];

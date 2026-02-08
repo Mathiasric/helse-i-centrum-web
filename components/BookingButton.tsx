@@ -59,7 +59,9 @@ export function BookingButton() {
             {therapists.map((t) => (
               <a
                 key={t.id}
-                href={`/terapeuter#${t.id}`}
+                href={t.bookingUrl ?? phoneHref}
+                target={t.bookingUrl ? "_blank" : undefined}
+                rel={t.bookingUrl ? "noopener noreferrer" : undefined}
                 role="menuitem"
                 className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 ${focusRing}`}
                 onClick={() => setOpen(false)}

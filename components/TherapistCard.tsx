@@ -94,11 +94,11 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
         <p className="mt-0.5 text-primary-600">{previewTitle}</p>
         <p className="mt-1 text-sm text-gray-600">{previewDescription}</p>
         <div className="mt-auto pt-3">
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-1.5">
             <BookingCta therapist={therapist} />
             <Link
               href="/terapeuter"
-              className={`text-sm font-medium text-primary-600 underline-offset-2 hover:underline ${focusRing} py-1`}
+              className={`text-sm font-medium text-primary-600 underline-offset-2 hover:underline sm:w-fit ${focusRing} py-1`}
             >
               Les mer
             </Link>
