@@ -8,30 +8,15 @@ export function ClinicSection() {
     <section className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-center">
-          <div className="space-y-4">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-xl sm:aspect-[4/3]">
-              <Image
-                src="/content/image/venterom_v2.png"
-                alt="Venterom og resepsjon hos Helse i Centrum i Bergen"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                loading="lazy"
-              />
-            </div>
-            {clinic.whatToExpect && clinic.whatToExpect.length > 0 && (
-              <div className="rounded-lg bg-gray-50 p-4">
-                <h3 className="text-sm font-semibold text-gray-900">Hva du møter hos oss</h3>
-                <ul className="mt-3 space-y-2">
-                  {clinic.whatToExpect.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600" aria-hidden />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          <div className="relative aspect-[16/10] overflow-hidden rounded-xl sm:aspect-[4/3]">
+            <Image
+              src="/content/image/venterom_v2.png"
+              alt="Venterom og resepsjon hos Helse i Centrum i Bergen"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
+            />
           </div>
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
