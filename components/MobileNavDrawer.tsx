@@ -13,7 +13,7 @@ const focusRing =
 const navLinks = [
   { href: "/", label: "Hjem" },
   { href: "/terapeuter", label: "Terapeuter" },
-  { href: "/#kontakt", label: "Kontakt" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
 
 interface MobileNavDrawerProps {

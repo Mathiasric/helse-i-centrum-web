@@ -90,7 +90,7 @@ export function Footer() {
                 Terapeuter
               </Link>
               <Link
-                href="/#kontakt"
+                href="/kontakt"
                 className={`text-sm text-slate-300 hover:text-slate-100 w-fit transition ${focusRing} px-0.5 py-0.5`}
               >
                 Kontakt

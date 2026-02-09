@@ -3,7 +3,6 @@ import { Hero } from "@/components/Hero";
 import { ServicesOverview } from "@/components/ServicesOverview";
 import { TherapistsPreview } from "@/components/TherapistsPreview";
 import { ClinicSection } from "@/components/ClinicSection";
-import { ContactSection } from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Fysioterapi i Bergen sentrum | Helse i Centrum",
@@ -36,7 +35,6 @@ export default function HomePage() {
       <ServicesOverview />
       <TherapistsPreview />
       <ClinicSection />
-      <ContactSection />
     </>
   );
 }

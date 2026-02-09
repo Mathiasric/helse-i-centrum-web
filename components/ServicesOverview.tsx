@@ -24,7 +24,7 @@ export function ServicesOverview() {
           Manuellterapi og allmennfysioterapi i Bergen sentrum.
         </p>
         <Link
-          href="/#kontakt"
+          href="/kontakt"
           className="mt-3 inline-block text-sm font-medium text-primary-600 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded"
         >
           Kontakt & adkomst →
