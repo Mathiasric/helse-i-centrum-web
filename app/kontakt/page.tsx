@@ -67,16 +67,6 @@ export default function KontaktPage() {
       {/* Kontaktinformasjon + kart */}
       <ContactSection />
 
-      {/* Netlify Forms: skjult form for build-time detection */}
-      <form name="kontakt-melding" method="POST" data-netlify="true" hidden>
-        <input type="hidden" name="form-name" value="kontakt-melding" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="tel" name="phone" />
-        <input type="date" name="fodselsdato" />
-        <textarea name="message" />
-      </form>
-
       {/* Send oss en melding: inngang + skjema */}
       <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
