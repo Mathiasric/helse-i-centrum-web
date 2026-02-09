@@ -25,7 +25,19 @@ export function ContactForm() {
       }
     });
 
+    const name = String(formData.get("name") ?? "");
+    const email = String(formData.get("email") ?? "");
+    const phone = String(formData.get("phone") ?? "");
+    const fodselsdato = String(formData.get("fodselsdato") ?? "");
+    const message = String(formData.get("message") ?? "");
+
     try {
+      await fetch("/.netlify/functions/send-form-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, fodselsdato, message }),
+      });
+
       const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
