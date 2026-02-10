@@ -8,8 +8,8 @@ export const handler: Handler = async (event) => {
     const data = JSON.parse(event.body || "{}");
 
     const result = await resend.emails.send({
-      from: "Helse i Centrum <onboarding@resend.dev>",
-      to: process.env.FORM_TO_EMAIL!,
+      from: "Helse i Centrum <hei@botpartner.no>",
+      to: [process.env.FORM_TO_EMAIL!],
       replyTo: data.email,
       subject: "Ny melding fra nettsiden",
       text: `
