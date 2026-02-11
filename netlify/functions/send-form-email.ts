@@ -9,22 +9,39 @@ const CONTACT_FROM_EMAIL =
   process.env.CONTACT_FROM_EMAIL || "no-reply@botpartner.no";
 const SITE_URL = process.env.URL || "https://helseicentrum.no";
 
-function norskDatoTid(): string {
-  return new Date().toLocaleString("nb-NO", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
+function norskDatoTidFooter(): string {
+  const dt = new Date();
+  const d = new Intl.DateTimeFormat("nb-NO", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(dt);
+  const t = new Intl.DateTimeFormat("nb-NO", {
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(dt);
+  return `${d} kl. ${t}`;
+}
+
+function fodselsdatoTilNorsk(iso: string): string {
+  const s = iso.trim();
+  if (!s) return "";
+  const [y, m, d] = s.split("-");
+  return d && m && y ? `${d}.${m}.${y}` : s;
 }
 
 function buildHtml(data: {
   name: string;
   email: string;
   phone?: string;
-  fodselsdato?: string;
+  fodselsdatoFormatted?: string;
   message: string;
 }): string {
   const telefon = data.phone?.trim() || "–";
-  const fodselsdato = data.fodselsdato?.trim() || "–";
+  const fodselsdatoRow =
+    data.fodselsdatoFormatted !== undefined && data.fodselsdatoFormatted !== ""
+      ? `<tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Fødselsdato</td><td style="padding: 0.25rem 0;">${escapeHtml(data.fodselsdatoFormatted!)}</td></tr>`
+      : "";
   return `
 <!DOCTYPE html>
 <html>
@@ -35,11 +52,11 @@ function buildHtml(data: {
     <tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Navn</td><td style="padding: 0.25rem 0;">${escapeHtml(data.name)}</td></tr>
     <tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">E-post</td><td style="padding: 0.25rem 0;">${escapeHtml(data.email)}</td></tr>
     <tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Telefon</td><td style="padding: 0.25rem 0;">${escapeHtml(telefon)}</td></tr>
-    <tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Fødselsdato</td><td style="padding: 0.25rem 0;">${escapeHtml(fodselsdato)}</td></tr>
+    ${fodselsdatoRow}
   </table>
-  <p style="font-weight: 600; margin-top: 1rem; margin-bottom: 0.25rem;">Melding</p>
-  <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(data.message)}</p>
-  <p style="margin-top: 1.5rem; font-size: 0.875rem; color: #666;">Sendt fra kontaktskjema – ${escapeHtml(SITE_URL)} – ${escapeHtml(norskDatoTid())}</p>
+  <p style="font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem;">Melding:</p>
+  <p style="margin: 0; margin-top: 0.5rem; white-space: pre-line;">${escapeHtml(data.message)}</p>
+  <p style="margin-top: 1.5rem; font-size: 0.875rem; color: #666;">Sendt fra kontaktskjema – ${escapeHtml(SITE_URL)} – ${escapeHtml(norskDatoTidFooter())}</p>
 </body>
 </html>`;
 }
@@ -108,30 +125,51 @@ export const handler: Handler = async (event) => {
       };
     }
 
+    const fodselsdatoNorsk = fodselsdatoTilNorsk(fodselsdato);
+    const msgLower = message.toLowerCase();
+    const subject =
+      msgLower.includes("time") ||
+      msgLower.includes("bestill") ||
+      msgLower.includes("booking")
+        ? "Timebestilling – Helse i Centrum"
+        : "Ny henvendelse – Helse i Centrum";
+
+    const fodselsdatoLinje =
+      fodselsdatoNorsk !== ""
+        ? `Fødselsdato: ${fodselsdatoNorsk}\n`
+        : "";
+
     const text = `
 Ny henvendelse fra nettsiden
 
 Navn: ${name}
 E-post: ${email}
 Telefon: ${phone || "–"}
-Fødselsdato: ${fodselsdato || "–"}
-
-Melding:
+${fodselsdatoLinje}Melding:
 ${message}
 
 ---
-Sendt fra kontaktskjema – ${SITE_URL} – ${norskDatoTid()}
+Sendt fra kontaktskjema – ${SITE_URL} – ${norskDatoTidFooter()}
 `;
 
+    const fromEmail = CONTACT_FROM_EMAIL.includes("<")
+      ? CONTACT_FROM_EMAIL.replace(/^.*<([^>]+)>.*$/, "$1").trim()
+      : CONTACT_FROM_EMAIL.trim();
+    const from = `Helse i Centrum (Nettside) <${fromEmail}>`;
+
     await resend.emails.send({
-      from: CONTACT_FROM_EMAIL.includes("<")
-        ? CONTACT_FROM_EMAIL
-        : `Helse i Centrum <${CONTACT_FROM_EMAIL}>`,
+      from,
       to: [CONTACT_TO_EMAIL],
       replyTo: email,
-      subject: "Ny pasienthenvendelse – Helse i Centrum",
+      subject,
       text,
-      html: buildHtml({ name, email, phone, fodselsdato, message }),
+      html: buildHtml({
+        name,
+        email,
+        phone,
+        fodselsdatoFormatted: fodselsdatoNorsk || undefined,
+        message,
+      }),
     });
 
     return {

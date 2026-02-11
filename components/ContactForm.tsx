@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-md";
@@ -9,6 +9,7 @@ type FormState = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>("idle");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,16 +55,36 @@ export function ContactForm() {
     }
   };
 
+  const handleReset = () => {
+    setFormState("idle");
+    formRef.current?.reset();
+  };
+
   if (formState === "success") {
     return (
-      <p className="rounded-lg bg-primary-50 p-4 text-base font-medium text-primary-800">
-        Takk! Meldingen er sendt.
-      </p>
+      <div className="space-y-4">
+        <div className="rounded-lg bg-primary-50 p-4">
+          <p className="text-base font-medium text-primary-800">
+            Takk! Vi har mottatt henvendelsen din.
+          </p>
+          <p className="mt-1 text-sm text-primary-700">
+            Vi svarer så snart vi kan.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handleReset}
+          className="inline-flex justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+        >
+          Send ny melding
+        </button>
+      </div>
     );
   }
 
   return (
     <form
+      ref={formRef}
       name="kontakt-melding"
       onSubmit={handleSubmit}
       className="space-y-4"

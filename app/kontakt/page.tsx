@@ -92,6 +92,9 @@ export default function KontaktPage() {
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                 Send oss en melding
               </h2>
+              <p className="mt-2 text-base text-gray-600">
+                Ønsker du å bestille time? Skriv det i meldingen og oppgi fødselsdato og telefon.
+              </p>
               <div className="mt-6">
                 <ContactForm />
                 <p className="mt-4 text-xs leading-relaxed text-gray-500">
