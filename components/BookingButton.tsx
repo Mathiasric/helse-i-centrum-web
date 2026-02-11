@@ -27,7 +27,8 @@ export function BookingButton() {
   const containerRef = useRef<HTMLDivElement>(null);
   useClickOutside(containerRef, () => setOpen(false));
 
-  const hasBookingUrls = therapists.some((t) => t.bookingUrl);
+  const therapistsWithBooking = therapists.filter((t) => t.bookingUrl);
+  const hasBookingUrls = therapistsWithBooking.length > 0;
 
   if (hasBookingUrls) {
     return (
@@ -56,12 +57,12 @@ export function BookingButton() {
             className="absolute right-0 top-full z-50 mt-2 min-w-[200px] rounded-lg border border-gray-200 bg-white py-2 shadow-lg"
             role="menu"
           >
-            {therapists.map((t) => (
+            {therapistsWithBooking.map((t) => (
               <a
                 key={t.id}
-                href={t.bookingUrl ?? phoneHref}
-                target={t.bookingUrl ? "_blank" : undefined}
-                rel={t.bookingUrl ? "noopener noreferrer" : undefined}
+                href={t.bookingUrl!}
+                target="_blank"
+                rel="noopener noreferrer"
                 role="menuitem"
                 className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 ${focusRing}`}
                 onClick={() => setOpen(false)}

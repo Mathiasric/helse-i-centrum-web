@@ -5,6 +5,8 @@ import { getClinic, getTherapists } from "@/lib/content";
 
 const clinic = getClinic();
 const therapists = getTherapists();
+const therapistsWithBooking = therapists.filter((t) => t.bookingUrl);
+const hasBookingUrls = therapistsWithBooking.length > 0;
 const phoneHref = `tel:${clinic.contact.phoneE164}`;
 
 const focusRing =
@@ -43,18 +45,28 @@ export function BookingSheet({ open, onClose }: BookingSheetProps) {
             Velg terapeut
           </h3>
           <div className="mt-4 flex flex-col gap-2">
-            {therapists.map((t) => (
+            {hasBookingUrls ? (
+              therapistsWithBooking.map((t) => (
+                <a
+                  key={t.id}
+                  href={t.bookingUrl!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onClose}
+                  className={`flex items-center justify-between rounded-lg bg-primary-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+                >
+                  Bestill hos {t.name.split(" ")[0]}
+                </a>
+              ))
+            ) : (
               <a
-                key={t.id}
-                href={t.bookingUrl ?? phoneHref}
-                target={t.bookingUrl ? "_blank" : undefined}
-                rel={t.bookingUrl ? "noopener noreferrer" : undefined}
+                href={phoneHref}
                 onClick={onClose}
                 className={`flex items-center justify-between rounded-lg bg-primary-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
               >
-                Bestill hos {t.name.split(" ")[0]}
+                Ring for å bestille
               </a>
-            ))}
+            )}
           </div>
         </div>
       </div>
