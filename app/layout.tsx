@@ -8,7 +8,7 @@ import { ClinicSchema } from "@/components/ClinicSchema";
 const clinic = getClinic();
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://helseicentrum.no"),
+  metadataBase: new URL("https://hicbergen.no"),
   title: {
     default: `${clinic.name} | ${clinic.location.city}`,
     template: `%s | ${clinic.name}`,

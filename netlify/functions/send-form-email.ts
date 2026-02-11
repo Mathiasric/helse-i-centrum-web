@@ -7,7 +7,7 @@ const CONTACT_TO_EMAIL =
   process.env.CONTACT_TO_EMAIL || process.env.FORM_TO_EMAIL || "";
 const CONTACT_FROM_EMAIL =
   process.env.CONTACT_FROM_EMAIL || "no-reply@botpartner.no";
-const SITE_URL = process.env.URL || "https://helseicentrum.no";
+const SITE_URL = process.env.URL || "https://hicbergen.no";
 
 function norskDatoTidFooter(): string {
   const dt = new Date();

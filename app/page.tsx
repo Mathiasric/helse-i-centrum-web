@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     "Fysioterapi i Bergen sentrum. Manuellterapi og behandling av muskel- og skjelettplager. Bestill time eller ring 55 90 06 80.",
   alternates: {
-    canonical: "https://helseicentrum.no",
+    canonical: "https://hicbergen.no",
   },
   openGraph: {
     title: "Fysioterapi i Bergen sentrum | Helse i Centrum",
     description:
       "Fysioterapi i Bergen sentrum. Manuellterapi og behandling av muskel- og skjelettplager. Bestill time eller ring 55 90 06 80.",
-    url: "https://helseicentrum.no",
+    url: "https://hicbergen.no",
     siteName: "Helse i Centrum",
     type: "website",
     images: [{ url: "/content/image/Hero_img.png", width: 1200, height: 630, alt: "Helse i Centrum – Fysioterapi i Bergen" }],

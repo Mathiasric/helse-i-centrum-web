@@ -1,6 +1,6 @@
 import { getClinic } from "@/lib/content";
 
-const SITE_URL = "https://helseicentrum.no";
+const SITE_URL = "https://hicbergen.no";
 
 export function ClinicSchema() {
   const clinic = getClinic();

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [],
     },
-    sitemap: "https://helseicentrum.no/sitemap.xml",
+    sitemap: "https://hicbergen.no/sitemap.xml",
   };
 }

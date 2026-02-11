@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 
 const clinic = getClinic();
 
-const SITE_URL = "https://helseicentrum.no";
+const SITE_URL = "https://hicbergen.no";
 
 export const metadata: Metadata = {
   title: "Kontakt & adkomst | Helse i Centrum – Bergen",

@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const SITE_URL = "https://helseicentrum.no";
+const SITE_URL = "https://hicbergen.no";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
