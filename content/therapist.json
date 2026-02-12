@@ -44,7 +44,7 @@
         "Kommunal fysioterapi",
         "Olympiatoppen"
       ],
-      "summary": "Erfaring fra privat og kommunal fysioterapi, spesielt muskel- og skjelettplager og idrettsskader.",
+      "summary": "Marcus er fysioterapeut i spesialisering i manuellterapi og har erfaring fra både privat og kommunal fysioterapi. Han behandler et bredt spekter av muskel- og skjelettplager, inkludert rygg- og nakkesmerter, skulder-, hofte- og kneproblematikk, samt idrettsrelaterte skader.",
       "professionalProfile": "Marcus er fysioterapeut i spesialisering i manuellterapi og har erfaring fra både privat og kommunal fysioterapi. Han behandler et bredt spekter av muskel- og skjelettplager, inkludert rygg- og nakkesmerter, skulder-, hofte- og kneproblematikk, samt idrettsrelaterte skader. Med mastergrad i fysioterapivitenskap og doktorgrad i helsevitenskap kombinerer han klinisk arbeid med forskning, og er tilknyttet Olympiatoppen innen styrke/kraft og ernæring.",
       "focusAreas": [
         "Muskel- og skjelettplager",
@@ -55,6 +55,17 @@
         "Olympiatoppen – styrke/kraft, ernæring og forskning"
       ],
       "image": "/team/marcus-smavik-dasa.jpg"
+    },
+    {
+      "id": "eirik-berge",
+      "name": "Eirik Hammer Østvold",
+      "role": "Fysioterapeut\nBSc (Hons) PT, MSc",
+      "agreement": "Kommunal driftsavtale",
+      "education": [],
+      "summary": "Eirik er utdannet fysioterapeut fra Robert Gordon University, Aberdeen fra 2000 og videreutdannet til Manuellterapeut fra Curtin University i Australia og Universitetet i Bergen i 2004. Har kommunal avtale og stilling ved Universitetet i Bergen og Haukeland.",
+      "professionalProfile": "Eirik er utdannet fysioterapeut fra Robert Gordon University, Aberdeen fra 2000 og videreutdannet til Manuellterapeut fra Curtin University i Australia og Universitetet i Bergen i 2004. Har kommunal avtale.\n\nHar 80% stilling ved instituttet og er veileder for fysioterapeuter som er i spesialisering i Masterprogrammet i Manuellterapi ved Universitetet i Bergen. Jobber også i 25% stilling på Haukeland Universitetssykehus ved Seksjon for smerte og palliasjon, poliklinikk for langvarige smerter. Eirik har spesialkompetanse innenfor langvarige komplekse sammensatte smerteproblemstillinger og har i tillegg spesialkompetanse på funksjonelle mage-/tarmlidelser (IBS). Har videreutdannelse i aksept og verdibasert atferdsterapi (ACT) og PRT (pain reprocessing therapy) og benytter seg i stor grad av Kognitiv Funksjonsrettet Terapi (CFT).",
+      "focusAreas": ["Muskel- og skjelettplager", "Rehabilitering", "Langvarige smerter"],
+      "image": "/team/eirik-berge.jpg"
     }
   ]
 }

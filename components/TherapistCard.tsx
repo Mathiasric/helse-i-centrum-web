@@ -13,15 +13,27 @@ interface TherapistCardProps {
 function BookingCta({ therapist }: { therapist: Therapist }) {
   const clinic = getClinic();
   const hasBooking = !!therapist.bookingUrl;
+  const contactHref = `/kontakt?terapeut=${encodeURIComponent(therapist.id)}#skjema`;
 
   return (
     <div className="flex flex-col gap-0.5">
-      <a
-        href={hasBooking ? "/kontakt#skjema" : `tel:${clinic.contact.phoneE164}`}
-        className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-      >
-        {hasBooking ? "Bestill time" : "Ring for time"}
-      </a>
+      {hasBooking ? (
+        <a
+          href={therapist.bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+        >
+          Bestill time
+        </a>
+      ) : (
+        <Link
+          href={contactHref}
+          className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+        >
+          Ta kontakt for time
+        </Link>
+      )}
       {hasBooking && (
         <span className="text-xs text-gray-500">Online booking · Physica</span>
       )}
@@ -33,12 +45,12 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
   if (variant === "full") {
     return (
       <article className="flex flex-col gap-6 rounded-xl border border-gray-200 bg-white p-5 sm:flex-row sm:p-6">
-        <div className="relative h-72 w-44 shrink-0 overflow-hidden rounded-lg sm:w-48">
+        <div className="relative aspect-square w-44 shrink-0 overflow-hidden rounded-2xl bg-slate-50 sm:w-48">
           <Image
             src={therapist.image}
-            alt={`Fysioterapeut ${therapist.name} – Helse i Centrum i Bergen`}
+            alt={`${therapist.name} – Helse i Centrum Bergen`}
             fill
-            className="object-cover"
+            className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
             style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
             sizes="208px"
             loading="lazy"
@@ -46,7 +58,7 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
         </div>
         <div className="flex flex-1 flex-col">
           <h3 className="text-xl font-bold text-gray-900">{therapist.name}</h3>
-          <p className="mt-1 text-primary-600">{therapist.role}</p>
+          <p className="mt-1 whitespace-pre-line text-primary-600">{therapist.role}</p>
           <p className="mt-4 text-gray-600">{therapist.professionalProfile}</p>
           {therapist.focusAreas.length > 0 && (
             <ul className="mt-4 flex flex-wrap gap-2">
@@ -68,19 +80,18 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
     );
   }
 
-  const previewDescription = "Les mer om kompetanse og behandlingstilbud.";
+  const teaser = therapist.summary ?? therapist.professionalProfile;
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
       <div className="flex justify-center px-1 pt-1.5">
-        <div className="relative h-72 w-full max-w-[360px] overflow-hidden rounded-lg">
+        <div className="relative aspect-square w-full max-w-[360px] overflow-hidden rounded-2xl bg-slate-50">
           <Image
             src={therapist.image}
-            alt={`Fysioterapeut ${therapist.name} – Helse i Centrum i Bergen`}
+            alt={`${therapist.name} – Helse i Centrum Bergen`}
             fill
-            className="object-cover w-full h-full"
+            className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
             style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
-            data-object-position={therapist.imagePosition ?? "center 35%"}
             sizes="360px"
             loading="lazy"
           />
@@ -88,18 +99,10 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
       </div>
       <div className="flex flex-1 flex-col p-3 pt-2">
         <h3 className="text-lg font-bold text-gray-900">{therapist.name}</h3>
-        <p className="mt-0.5 text-primary-600">{therapist.role}</p>
-        <p className="mt-1 text-sm text-gray-600">{previewDescription}</p>
+        <p className="mt-0.5 whitespace-pre-line text-primary-600">{therapist.role}</p>
+        <p className="mt-1 text-sm text-gray-600 line-clamp-2">{teaser}</p>
         <div className="mt-auto pt-3">
-          <div className="flex flex-wrap items-center gap-1.5">
-            <BookingCta therapist={therapist} />
-            <Link
-              href="/terapeuter"
-              className={`text-sm font-medium text-primary-600 underline-offset-2 hover:underline ${focusRing} py-1`}
-            >
-              Les mer
-            </Link>
-          </div>
+          <BookingCta therapist={therapist} />
         </div>
       </div>
     </article>

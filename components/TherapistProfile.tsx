@@ -41,13 +41,13 @@ export function TherapistProfile({ therapist }: TherapistProfileProps) {
       className="flex flex-col gap-6 md:flex-row md:items-start md:gap-10 scroll-mt-24"
     >
       {/* Image: full width on mobile, fixed size on desktop */}
-      <div className="relative w-full shrink-0 overflow-hidden rounded-xl aspect-[4/3] md:aspect-auto md:h-72 md:w-60">
+      <div className="relative w-full shrink-0 overflow-hidden rounded-xl aspect-square bg-slate-50 md:w-60">
         <Image
           src={therapist.image}
-          alt={`Fysioterapeut ${therapist.name} – Helse i Centrum i Bergen`}
+          alt={`${therapist.name} – Helse i Centrum Bergen`}
           fill
-          className="object-cover object-center"
-          style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+          className={`object-cover object-center ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+          style={{ objectPosition: therapist.id === "eirik-berge" ? "center" : (therapist.imagePosition ?? "center 35%") }}
           sizes="(max-width: 767px) 100vw, 240px"
           loading="lazy"
         />
@@ -55,7 +55,7 @@ export function TherapistProfile({ therapist }: TherapistProfileProps) {
 
       <div className="min-w-0 flex-1 md:max-w-none">
         <h2 className="text-xl font-bold text-gray-900">{therapist.name}</h2>
-        <p className="mt-1 text-sm font-semibold text-gray-700 md:text-primary-600">{therapist.role}</p>
+        <p className="mt-1 whitespace-pre-line text-sm font-semibold text-gray-700 md:text-primary-600">{therapist.role}</p>
 
         {/* Desktop (md+): original layout – full professionalProfile, no summary/bullets/accordion */}
         <div className="hidden mt-4 max-w-prose space-y-4 text-gray-600 leading-relaxed md:block">

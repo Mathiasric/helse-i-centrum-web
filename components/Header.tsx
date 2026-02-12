@@ -10,6 +10,7 @@ import { BookingSheet } from "./BookingSheet";
 
 const clinic = getClinic();
 const therapists = getTherapists();
+const useTerapeuterLink = therapists.length >= 3;
 const hasBookingUrls = therapists.some((t) => t.bookingUrl);
 const firstBookingUrl = therapists[0]?.bookingUrl;
 
@@ -65,7 +66,14 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
-              {hasBookingUrls ? (
+              {useTerapeuterLink ? (
+                <Link
+                  href="/terapeuter"
+                  className={`inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+                >
+                  Bestill time
+                </Link>
+              ) : hasBookingUrls ? (
                 <>
                   {therapists.length === 1 && firstBookingUrl ? (
                     <Link
@@ -90,7 +98,7 @@ export function Header() {
               ) : (
                 <a
                   href={`tel:${clinic.contact.phoneE164}`}
-                  className={`md:hidden inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+                  className={`inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
                 >
                   Bestill time
                 </a>
@@ -107,7 +115,7 @@ export function Header() {
                 </svg>
               </button>
 
-              {!hasBookingUrls && (
+              {!useTerapeuterLink && !hasBookingUrls && (
                 <div className="hidden md:block">
                   <BookingButton />
                 </div>
@@ -117,8 +125,8 @@ export function Header() {
         </div>
       </header>
 
-      <MobileNavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} onRequestBooking={hasBookingUrls ? () => setBookingOpen(true) : undefined} />
-      {hasBookingUrls && <BookingSheet open={bookingOpen} onClose={() => setBookingOpen(false)} />}
+      <MobileNavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} useTerapeuterLink={useTerapeuterLink} onRequestBooking={!useTerapeuterLink && hasBookingUrls ? () => setBookingOpen(true) : undefined} />
+      {!useTerapeuterLink && hasBookingUrls && <BookingSheet open={bookingOpen} onClose={() => setBookingOpen(false)} />}
     </>
   );
 }

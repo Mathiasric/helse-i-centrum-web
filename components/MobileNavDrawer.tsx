@@ -19,10 +19,11 @@ const navLinks = [
 interface MobileNavDrawerProps {
   open: boolean;
   onClose: () => void;
+  useTerapeuterLink?: boolean;
   onRequestBooking?: () => void;
 }
 
-export function MobileNavDrawer({ open, onClose, onRequestBooking }: MobileNavDrawerProps) {
+export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBooking }: MobileNavDrawerProps) {
   const handleEsc = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -80,15 +81,26 @@ export function MobileNavDrawer({ open, onClose, onRequestBooking }: MobileNavDr
             >
               Ring
             </a>
-            {onRequestBooking && (
+            {useTerapeuterLink ? (
               <Link
-                href="/kontakt#skjema"
+                href="/terapeuter"
                 onClick={onClose}
                 className={`rounded-lg px-4 py-3 text-left text-base font-medium text-primary-600 hover:bg-primary-50 ${focusRing}`}
               >
                 Bestill time
               </Link>
-            )}
+            ) : onRequestBooking ? (
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onRequestBooking();
+                }}
+                className={`rounded-lg px-4 py-3 text-left text-base font-medium text-primary-600 hover:bg-primary-50 ${focusRing}`}
+              >
+                Bestill time
+              </button>
+            ) : null}
           </nav>
         </div>
       </div>

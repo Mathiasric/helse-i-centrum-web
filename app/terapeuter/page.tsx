@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getClinic, getTherapists } from "@/lib/content";
-import { TherapistProfile } from "@/components/TherapistProfile";
+import { TherapistPageCard } from "@/components/TherapistPageCard";
 import { BreadcrumbSchema } from "@/components/ClinicSchema";
 
 const clinic = getClinic();
@@ -41,7 +41,7 @@ export default function TherapistsPage() {
           { name: "Terapeuter", url: `${SITE_URL}/terapeuter` },
         ]}
       />
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Våre terapeuter
         </h1>
@@ -49,17 +49,17 @@ export default function TherapistsPage() {
           {clinic.therapistsPageIntro ?? clinic.summary}
         </p>
         <Link
-          href="/kontakt"
+          href="/kontakt#skjema"
           className="mt-4 inline-block text-sm font-medium text-primary-600 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded"
         >
           Kontakt klinikken i Bergen →
         </Link>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
-        <div className="flex flex-col gap-16">
+      <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-24">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {therapists.map((therapist) => (
-            <TherapistProfile key={therapist.id} therapist={therapist} />
+            <TherapistPageCard key={therapist.id} therapist={therapist} />
           ))}
         </div>
       </section>

@@ -7,7 +7,7 @@ const therapists = getTherapists();
 export function TherapistsPreview() {
   return (
     <section className="bg-gray-50 py-14 sm:py-16" aria-labelledby="terapeuter-heading">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <h2 id="terapeuter-heading" className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
           Våre terapeuter
         </h2>
@@ -20,7 +20,7 @@ export function TherapistsPreview() {
         >
           Se terapeuter →
         </Link>
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 sm:items-stretch">
+        <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:items-stretch">
           {therapists.map((therapist) => (
             <TherapistCard key={therapist.id} therapist={therapist} variant="preview" />
           ))}
