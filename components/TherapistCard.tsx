@@ -86,8 +86,17 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
         <h3 className="text-lg font-bold text-gray-900">{therapist.name}</h3>
         <p className="mt-0.5 whitespace-pre-line text-primary-600">{therapist.role}</p>
         <p className="mt-1 text-sm text-gray-600 line-clamp-2">{teaser}</p>
-        <div className="mt-auto pt-3">
+        <div className="mt-auto pt-3 flex flex-col gap-2">
           <BookingCta therapist={therapist} />
+          <Link
+            href={`/terapeuter#${therapist.id}`}
+            className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-primary-600 hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded py-1"
+          >
+            Les mer
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
       </div>
     </article>

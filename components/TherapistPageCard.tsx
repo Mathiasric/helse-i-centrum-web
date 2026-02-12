@@ -149,7 +149,7 @@ export function TherapistPageCard({ therapist }: TherapistPageCardProps) {
 
   return (
     <>
-      <article className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      <article id={therapist.id} className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm scroll-mt-24">
         <div className="relative h-52 w-full overflow-hidden rounded-t-xl bg-slate-50 md:aspect-square md:h-auto">
           <Image
             src={therapist.image}
