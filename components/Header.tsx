@@ -69,7 +69,7 @@ export function Header() {
                 <>
                   {therapists.length === 1 && firstBookingUrl ? (
                     <Link
-                      href="/kontakt"
+                      href="/kontakt#skjema"
                       className={`md:hidden inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
                     >
                       Bestill time

@@ -50,7 +50,7 @@ export function BookingSheet({ open, onClose }: BookingSheetProps) {
               therapistsWithBooking.map((t) => (
                 <Link
                   key={t.id}
-                  href="/kontakt"
+                  href="/kontakt#skjema"
                   onClick={onClose}
                   className={`flex items-center justify-between rounded-lg bg-primary-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
                 >

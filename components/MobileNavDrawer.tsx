@@ -82,7 +82,7 @@ export function MobileNavDrawer({ open, onClose, onRequestBooking }: MobileNavDr
             </a>
             {onRequestBooking && (
               <Link
-                href="/kontakt"
+                href="/kontakt#skjema"
                 onClick={onClose}
                 className={`rounded-lg px-4 py-3 text-left text-base font-medium text-primary-600 hover:bg-primary-50 ${focusRing}`}
               >

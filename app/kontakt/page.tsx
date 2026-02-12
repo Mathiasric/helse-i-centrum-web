@@ -69,7 +69,7 @@ export default function KontaktPage() {
       <ContactSection />
 
       {/* Send oss en melding: inngang + skjema */}
-      <section className="bg-white py-14 sm:py-16">
+      <section id="skjema" className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-start">
             {/* Venstre på desktop, under på mobil */}

@@ -37,7 +37,7 @@ export function Hero() {
         </p>
         <div className="mt-6 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:gap-4">
           <Link
-            href="/kontakt"
+            href="/kontakt#skjema"
             className={`inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
           >
             Bestill time
