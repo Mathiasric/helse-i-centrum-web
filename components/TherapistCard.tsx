@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getClinic, type Therapist } from "@/lib/content";
+import { type Therapist } from "@/lib/content";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-md";
@@ -11,32 +11,17 @@ interface TherapistCardProps {
 }
 
 function BookingCta({ therapist }: { therapist: Therapist }) {
-  const clinic = getClinic();
   const hasBooking = !!therapist.bookingUrl;
   const contactHref = `/kontakt?terapeut=${encodeURIComponent(therapist.id)}#skjema`;
 
   return (
     <div className="flex flex-col gap-0.5">
-      {hasBooking ? (
-        <a
-          href={therapist.bookingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-        >
-          Bestill time
-        </a>
-      ) : (
-        <Link
-          href={contactHref}
-          className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-        >
-          Ta kontakt for time
-        </Link>
-      )}
-      {hasBooking && (
-        <span className="text-xs text-gray-500">Online booking · Physica</span>
-      )}
+      <Link
+        href={contactHref}
+        className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+      >
+        {hasBooking ? "Bestill time" : "Ta kontakt for time"}
+      </Link>
     </div>
   );
 }

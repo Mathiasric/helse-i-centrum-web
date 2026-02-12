@@ -167,26 +167,12 @@ export function TherapistPageCard({ therapist }: TherapistPageCardProps) {
           <p className="mt-2 text-sm text-gray-600 line-clamp-3">{teaser}</p>
 
           <div className="mt-4 mt-auto flex flex-col gap-2">
-            {hasBooking ? (
-              <a
-                href={therapist.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-              >
-                Bestill time
-              </a>
-            ) : (
-              <Link
-                href={contactHref}
-                className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-              >
-                Ta kontakt for time
-              </Link>
-            )}
-            {hasBooking && (
-              <span className="text-xs text-gray-500">Online booking · Physica</span>
-            )}
+            <Link
+              href={contactHref}
+              className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+            >
+              {hasBooking ? "Bestill time" : "Ta kontakt for time"}
+            </Link>
 
             <button
               type="button"

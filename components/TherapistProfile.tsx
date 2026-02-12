@@ -13,18 +13,16 @@ interface TherapistProfileProps {
 
 function ProfileCta({ therapist, compact }: { therapist: Therapist; compact?: boolean }) {
   const hasBooking = !!therapist.bookingUrl;
+  const contactHref = `/kontakt?terapeut=${encodeURIComponent(therapist.id)}#skjema`;
 
   return (
     <div className={`flex flex-col gap-0.5 ${compact ? "" : "mt-6"}`}>
       <a
-        href={hasBooking ? "/kontakt#skjema" : `tel:${getClinic().contact.phoneE164}`}
+        href={hasBooking ? contactHref : `tel:${getClinic().contact.phoneE164}`}
         className={`inline-flex items-center justify-center rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing} w-full md:w-fit`}
       >
         {hasBooking ? "Bestill time" : "Ring for time"}
       </a>
-      {hasBooking && (
-        <span className="text-xs text-gray-500">Online booking · Physica</span>
-      )}
     </div>
   );
 }
