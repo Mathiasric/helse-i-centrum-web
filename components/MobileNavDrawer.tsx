@@ -81,16 +81,13 @@ export function MobileNavDrawer({ open, onClose, onRequestBooking }: MobileNavDr
               Ring
             </a>
             {onRequestBooking && (
-              <button
-                type="button"
-                onClick={() => {
-                  onClose();
-                  onRequestBooking();
-                }}
+              <Link
+                href="/kontakt"
+                onClick={onClose}
                 className={`rounded-lg px-4 py-3 text-left text-base font-medium text-primary-600 hover:bg-primary-50 ${focusRing}`}
               >
                 Bestill time
-              </button>
+              </Link>
             )}
           </nav>
         </div>

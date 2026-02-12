@@ -17,9 +17,7 @@ function ProfileCta({ therapist, compact }: { therapist: Therapist; compact?: bo
   return (
     <div className={`flex flex-col gap-0.5 ${compact ? "" : "mt-6"}`}>
       <a
-        href={hasBooking ? therapist.bookingUrl! : `tel:${getClinic().contact.phoneE164}`}
-        target={hasBooking ? "_blank" : undefined}
-        rel={hasBooking ? "noopener noreferrer" : undefined}
+        href={hasBooking ? "/kontakt" : `tel:${getClinic().contact.phoneE164}`}
         className={`inline-flex items-center justify-center rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing} w-full md:w-fit`}
       >
         {hasBooking ? "Bestill time" : "Ring for time"}

@@ -17,9 +17,7 @@ function BookingCta({ therapist }: { therapist: Therapist }) {
   return (
     <div className="flex flex-col gap-0.5">
       <a
-        href={hasBooking ? therapist.bookingUrl! : `tel:${clinic.contact.phoneE164}`}
-        target={hasBooking ? "_blank" : undefined}
-        rel={hasBooking ? "noopener noreferrer" : undefined}
+        href={hasBooking ? "/kontakt" : `tel:${clinic.contact.phoneE164}`}
         className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
       >
         {hasBooking ? "Bestill time" : "Ring for time"}

@@ -68,14 +68,12 @@ export function Header() {
               {hasBookingUrls ? (
                 <>
                   {therapists.length === 1 && firstBookingUrl ? (
-                    <a
-                      href={firstBookingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href="/kontakt"
                       className={`md:hidden inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
                     >
                       Bestill time
-                    </a>
+                    </Link>
                   ) : (
                     <button
                       type="button"
