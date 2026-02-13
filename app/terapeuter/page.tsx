@@ -57,9 +57,22 @@ export default function TherapistsPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-24">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {therapists.map((therapist) => (
-            <TherapistPageCard key={therapist.id} therapist={therapist} />
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-6">
+          {therapists.map((therapist, index) => (
+            <div
+              key={therapist.id}
+              className={
+                [
+                  "w-full min-w-0 lg:col-span-2",
+                  therapists.length === 5 && index === 3 ? "lg:col-start-2 lg:mr-8" : "",
+                  therapists.length === 5 && index === 4 ? "lg:col-start-4 lg:ml-8" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")
+              }
+            >
+              <TherapistPageCard therapist={therapist} />
+            </div>
           ))}
         </div>
       </section>

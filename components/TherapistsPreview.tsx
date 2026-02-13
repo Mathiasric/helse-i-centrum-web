@@ -20,9 +20,22 @@ export function TherapistsPreview() {
         >
           Se terapeuter →
         </Link>
-        <div className="mt-8 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:items-stretch">
-          {therapists.map((therapist) => (
-            <TherapistCard key={therapist.id} therapist={therapist} variant="preview" />
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-6 sm:items-stretch">
+          {therapists.map((therapist, index) => (
+            <div
+              key={therapist.id}
+              className={
+                [
+                  "w-full min-w-0 lg:col-span-2",
+                  therapists.length === 5 && index === 3 ? "lg:col-start-2" : "",
+                  therapists.length === 5 && index === 4 ? "lg:col-start-4" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")
+              }
+            >
+              <TherapistCard therapist={therapist} variant="preview" />
+            </div>
           ))}
         </div>
       </div>

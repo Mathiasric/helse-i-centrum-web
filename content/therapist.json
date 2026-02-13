@@ -3,7 +3,6 @@
     {
       "id": "magnus-richardsen",
       "name": "Magnus Richardsen",
-      "bookingUrl": "https://helse-i-centrum.physica.no/booking/magnus",
       "role": "Fysioterapeut i spesialisering i manuellterapi",
       "agreement": "Kommunal driftsavtale",
       "education": [
@@ -32,7 +31,6 @@
     {
       "id": "marcus-smavik-dasa",
       "name": "Marcus Småvik Dasa",
-      "bookingUrl": "https://helse-i-centrum.physica.no/booking/marcus",
       "role": "Fysioterapeut i spesialisering i manuellterapi",
       "agreement": "Kommunal driftsavtale",
       "education": [
@@ -66,6 +64,28 @@
       "professionalProfile": "Eirik er utdannet fysioterapeut fra Robert Gordon University, Aberdeen fra 2000 og videreutdannet til Manuellterapeut fra Curtin University i Australia og Universitetet i Bergen i 2004. Har kommunal avtale.\n\nHar 80% stilling ved instituttet og er veileder for fysioterapeuter som er i spesialisering i Masterprogrammet i Manuellterapi ved Universitetet i Bergen. Jobber også i 25% stilling på Haukeland Universitetssykehus ved Seksjon for smerte og palliasjon, poliklinikk for langvarige smerter. Eirik har spesialkompetanse innenfor langvarige komplekse sammensatte smerteproblemstillinger og har i tillegg spesialkompetanse på funksjonelle mage-/tarmlidelser (IBS). Har videreutdannelse i aksept og verdibasert atferdsterapi (ACT) og PRT (pain reprocessing therapy) og benytter seg i stor grad av Kognitiv Funksjonsrettet Terapi (CFT).",
       "focusAreas": ["Muskel- og skjelettplager", "Rehabilitering", "Langvarige smerter"],
       "image": "/team/eirik-berge.jpg"
+    },
+    {
+      "id": "kjartan-vibe-fersum",
+      "name": "Kjartan Vibe Fersum",
+      "role": "Manuellterapeut",
+      "agreement": "",
+      "education": ["Doktorgrad innen behandling av langvarige muskel- og skjelettplager", "Førsteamanuensis ved Universitetet i Bergen"],
+      "summary": "Kjartan Vibe Fersum er manuellterapeut med doktorgrad innen behandling av langvarige muskel- og skjelettplager. Han kombinerer over 20 års klinisk erfaring med forskning og undervisning som førsteamanuensis ved Universitetet i Bergen.",
+      "professionalProfile": "Kjartan Vibe Fersum er manuellterapeut med doktorgrad innen behandling av langvarige muskel- og skjelettplager. Han kombinerer over 20 års klinisk erfaring med forskning og undervisning som førsteamanuensis ved Universitetet i Bergen. Hans arbeid har hatt som mål å forstå hvorfor smerter vedvarer – og hva som faktisk bidrar til varig bedring.\n\nHan arbeider særlig med personer som har hatt rygg-, nakke- eller andre muskel- og skjelettplager over tid, ofte etter at tidligere behandling ikke har gitt ønsket effekt. Konsultasjonene er grundige og helhetlige, med fokus på sammenhengen mellom bevegelse, belastning, stress, søvn og livssituasjon.\n\nKjartan har også et særlig engasjement for kvinnehelse, inkludert smerter og plager knyttet til overgangsalder. Mange kvinner opplever endringer i kroppen i denne fasen – med økt smertefølsomhet, stivhet, redusert søvn og energinivå. Her kombinerer han oppdatert kunnskap om hormonelle endringer med en helhetlig forståelse av smerte og funksjon.\n\nMålet er ikke bare symptomlindring, men økt trygghet, forståelse og mestring – slik at du kan fungere bedre i hverdagen og oppleve mer kontroll over egen helse.\n\nØnsker du en grundig vurdering og en behandling basert på både forskning og lang klinisk erfaring, er du velkommen til å ta kontakt.",
+      "focusAreas": ["Langvarige muskel- og skjelettplager", "Rygg og nakke", "Kvinnehelse og overgangsalder"],
+      "image": "/content/image/terapeut_kjartan.png"
+    },
+    {
+      "id": "placeholder-5",
+      "name": "Informasjon kommer snart",
+      "role": "",
+      "agreement": "",
+      "education": [],
+      "summary": "Informasjon kommer snart.",
+      "professionalProfile": "Informasjon kommer snart.",
+      "focusAreas": [],
+      "image": "/content/image/Inngang_klinikk_v2.png"
     }
   ]
 }

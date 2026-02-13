@@ -40,15 +40,25 @@ export function TherapistProfile({ therapist }: TherapistProfileProps) {
     >
       {/* Image: full width on mobile, fixed size on desktop */}
       <div className="relative w-full shrink-0 overflow-hidden rounded-xl aspect-square bg-slate-50 md:w-60">
-        <Image
-          src={therapist.image}
-          alt={`${therapist.name} – Helse i Centrum Bergen`}
-          fill
-          className={`object-cover object-center ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
-          style={{ objectPosition: therapist.id === "eirik-berge" ? "center" : (therapist.imagePosition ?? "center 35%") }}
-          sizes="(max-width: 767px) 100vw, 240px"
-          loading="lazy"
-        />
+        {therapist.image.startsWith("/content/") ? (
+          <img
+            src={therapist.image}
+            alt={`${therapist.name} – Helse i Centrum Bergen`}
+            className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+            style={{ objectPosition: therapist.id === "eirik-berge" ? "center" : (therapist.imagePosition ?? "center 35%") }}
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            src={therapist.image}
+            alt={`${therapist.name} – Helse i Centrum Bergen`}
+            fill
+            className={`object-cover object-center ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+            style={{ objectPosition: therapist.id === "eirik-berge" ? "center" : (therapist.imagePosition ?? "center 35%") }}
+            sizes="(max-width: 767px) 100vw, 240px"
+            loading="lazy"
+          />
+        )}
       </div>
 
       <div className="min-w-0 flex-1 md:max-w-none">

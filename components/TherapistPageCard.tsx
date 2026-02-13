@@ -14,16 +14,26 @@ interface TherapistPageCardProps {
 }
 
 function TherapistModalImage({ therapist }: { therapist: Therapist }) {
+  const useNativeImg = therapist.image.startsWith("/content/");
   return (
     <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-50">
-      <Image
-        src={therapist.image}
-        alt=""
-        fill
-        className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
-        style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
-        sizes="(max-width: 640px) 100vw, 400px"
-      />
+      {useNativeImg ? (
+        <img
+          src={therapist.image}
+          alt=""
+          className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+          style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+        />
+      ) : (
+        <Image
+          src={therapist.image}
+          alt=""
+          fill
+          className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+          style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+          sizes="(max-width: 640px) 100vw, 400px"
+        />
+      )}
     </div>
   );
 }
@@ -141,25 +151,72 @@ function BioModal({
   );
 }
 
+const PLACEHOLDER_ID = "placeholder-5";
+
+function PlaceholderCardContent() {
+  return (
+    <article
+      id={PLACEHOLDER_ID}
+      className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm scroll-mt-24"
+    >
+      <div className="relative flex h-52 w-full items-center justify-center overflow-hidden rounded-t-xl bg-slate-100 md:aspect-square md:h-auto">
+        <svg
+          className="h-20 w-20 text-slate-400"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden
+        >
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+      </div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <h3 className="text-lg font-bold text-gray-900">Flere terapeuter</h3>
+        <p className="mt-2 text-sm text-gray-600">Profil publiseres fortløpende.</p>
+        <div className="mt-4 mt-auto">
+          <Link
+            href="/kontakt"
+            className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+          >
+            Kontakt klinikken
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export function TherapistPageCard({ therapist }: TherapistPageCardProps) {
+  if (therapist.id === PLACEHOLDER_ID) {
+    return <PlaceholderCardContent />;
+  }
+
   const [modalOpen, setModalOpen] = useState(false);
   const hasBooking = !!therapist.bookingUrl;
   const contactHref = `/kontakt?terapeut=${encodeURIComponent(therapist.id)}#skjema`;
   const teaser = therapist.summary ?? therapist.professionalProfile;
-
   return (
     <>
       <article id={therapist.id} className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm scroll-mt-24">
         <div className="relative h-52 w-full overflow-hidden rounded-t-xl bg-slate-50 md:aspect-square md:h-auto">
-          <Image
-            src={therapist.image}
-            alt={`${therapist.name} – Helse i Centrum Bergen`}
-            fill
-            className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
-            style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            loading="lazy"
-          />
+          {therapist.image.startsWith("/content/") ? (
+            <img
+              src={therapist.image}
+              alt={`${therapist.name} – Helse i Centrum Bergen`}
+              className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+              style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={therapist.image}
+              alt={`${therapist.name} – Helse i Centrum Bergen`}
+              fill
+              className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+              style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              loading="lazy"
+            />
+          )}
         </div>
         <div className="flex flex-1 flex-col p-4 sm:p-5">
           <h3 className="text-lg font-bold text-gray-900">{therapist.name}</h3>
