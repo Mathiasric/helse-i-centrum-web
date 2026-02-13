@@ -197,28 +197,30 @@ export function TherapistPageCard({ therapist }: TherapistPageCardProps) {
   return (
     <>
       <article id={therapist.id} className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm scroll-mt-24">
-        <div className="relative h-52 w-full overflow-hidden rounded-t-xl bg-slate-50 md:aspect-square md:h-auto">
-          {therapist.image.startsWith("/content/") ? (
-            <img
-              src={therapist.image}
-              alt={`${therapist.name} – Helse i Centrum Bergen`}
-              className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
-              style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
-              loading="lazy"
-            />
-          ) : (
-            <Image
-              src={therapist.image}
-              alt={`${therapist.name} – Helse i Centrum Bergen`}
-              fill
-              className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
-              style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              loading="lazy"
-            />
-          )}
+        <div className="flex justify-center px-1 pt-1.5 md:block md:px-0 md:pt-0">
+          <div className="relative aspect-square w-full max-w-[360px] overflow-hidden rounded-2xl bg-slate-50 md:max-w-none md:rounded-t-xl md:aspect-square">
+            {therapist.image.startsWith("/content/") ? (
+              <img
+                src={therapist.image}
+                alt={`${therapist.name} – Helse i Centrum Bergen`}
+                className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+                style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+                loading="lazy"
+              />
+            ) : (
+              <Image
+                src={therapist.image}
+                alt={`${therapist.name} – Helse i Centrum Bergen`}
+                fill
+                className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+                style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
+                sizes="(max-width: 768px) 360px, (max-width: 1024px) 50vw, 33vw"
+                loading="lazy"
+              />
+            )}
+          </div>
         </div>
-        <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <div className="flex flex-1 flex-col p-3 pt-2 md:p-4 sm:p-5">
           <h3 className="text-lg font-bold text-gray-900">{therapist.name}</h3>
           <p className="mt-0.5 whitespace-pre-line text-sm text-primary-600">{therapist.role}</p>
           <p className="mt-2 text-sm text-gray-600 line-clamp-3">{teaser}</p>
