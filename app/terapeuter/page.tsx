@@ -64,8 +64,8 @@ export default function TherapistsPage() {
               className={
                 [
                   "w-full min-w-0 lg:col-span-2",
-                  therapists.length === 5 && index === 3 ? "lg:col-start-2 lg:mr-9" : "",
-                  therapists.length === 5 && index === 4 ? "lg:col-start-4 lg:ml-9" : "",
+                  therapists.length === 5 && index === 3 ? "lg:col-start-2 lg:mr-[2.5rem]" : "",
+                  therapists.length === 5 && index === 4 ? "lg:col-start-4 lg:ml-[2.5rem]" : "",
                 ]
                   .filter(Boolean)
                   .join(" ")
