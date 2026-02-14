@@ -16,12 +16,31 @@ function BookingCta({ therapist }: { therapist: Therapist }) {
 
   return (
     <div className="flex flex-col gap-0.5">
-      <Link
-        href={contactHref}
-        className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-      >
-        {hasBooking ? "Bestill time" : "Ta kontakt for time"}
-      </Link>
+      {hasBooking ? (
+        <div className="flex items-center gap-2">
+          <a
+            href={therapist.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex-1 inline-flex items-center justify-center rounded-lg bg-primary-600 px-3 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+          >
+            Online booking
+          </a>
+          <Link
+            href={contactHref}
+            className={`flex-1 inline-flex items-center justify-center rounded-lg border border-primary-600 px-3 py-2.5 text-sm font-semibold text-primary-600 transition hover:bg-primary-50 ${focusRing}`}
+          >
+            Kontakt for time
+          </Link>
+        </div>
+      ) : (
+        <Link
+          href={contactHref}
+          className={`inline-flex w-fit items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+        >
+          Ta kontakt for time
+        </Link>
+      )}
     </div>
   );
 }
