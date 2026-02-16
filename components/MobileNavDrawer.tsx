@@ -52,27 +52,29 @@ export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBoo
 
   return (
     <div
-      className={`fixed inset-0 z-[100] md:hidden transition-opacity duration-200 ${
-        open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      className={`fixed inset-0 z-50 lg:hidden ${
+        open ? "pointer-events-auto" : "pointer-events-none"
       }`}
       aria-modal="true"
       aria-label="Meny"
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/40"
+        className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+          open ? "opacity-100" : "opacity-0"
+        }`}
         aria-hidden="true"
         onClick={onClose}
       />
 
-      {/* Drawer – slide in from right */}
+      {/* Drawer – slide in from right, full height */}
       <div
-        className={`fixed right-0 top-0 h-dvh w-[85vw] max-w-sm bg-white shadow-xl transition-transform duration-200 ${
+        className={`absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl transition-transform duration-300 ease-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Top: X button */}
-        <div className="flex items-center justify-end px-4 pt-4">
+        <div className="flex items-center justify-end px-6 pt-6">
           <button
             type="button"
             onClick={onClose}
@@ -85,13 +87,13 @@ export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBoo
           </button>
         </div>
 
-        <nav className="flex flex-col gap-1 px-4 pt-2" aria-label="Hovednavigasjon">
-          {/* Bestill time – øverst som primær CTA */}
+        <div className="px-6 py-6 space-y-6">
+          {/* Bestill time – øverst, kompakt CTA */}
           {useTerapeuterLink ? (
             <Link
               href="/terapeuter"
               onClick={onClose}
-              className={`w-full rounded-lg bg-primary-600 px-4 py-3 text-center text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+              className={`block w-full rounded-lg bg-primary-700 py-3 text-center text-base font-semibold text-white transition hover:bg-primary-800 ${focusRing}`}
             >
               Bestill time
             </Link>
@@ -102,38 +104,41 @@ export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBoo
                 onClose();
                 onRequestBooking();
               }}
-              className={`w-full rounded-lg bg-primary-600 px-4 py-3 text-center text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+              className={`w-full rounded-lg bg-primary-700 py-3 text-center text-base font-semibold text-white transition hover:bg-primary-800 ${focusRing}`}
             >
               Bestill time
             </button>
           ) : null}
 
-          {/* Separator */}
-          <div className="my-2 border-t border-gray-100" />
-
-          {/* Nav links */}
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
+          {/* Nav links – stram og ryddig */}
+          <nav className="flex flex-col" aria-label="Hovednavigasjon">
+            {navLinks.map((link) => {
+              const active = isActive(pathname, link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={onClose}
+                  className={`relative block text-lg font-medium py-2 ${focusRing} ${
+                    active ? "text-gray-900" : "text-gray-700 hover:text-gray-900"
+                  }`}
+                >
+                  {link.label}
+                  {active && (
+                    <span className="absolute left-0 -bottom-0.5 h-[2px] w-full bg-primary-700" />
+                  )}
+                </Link>
+              );
+            })}
+            <a
+              href={phoneHref}
               onClick={onClose}
-              className={`rounded-lg px-4 py-3 text-base font-medium transition ${focusRing} ${
-                isActive(pathname, link.href)
-                  ? "text-gray-900 bg-gray-50 underline underline-offset-4 decoration-2 decoration-primary-600"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-              }`}
+              className={`block text-lg font-medium py-2 text-gray-700 hover:text-gray-900 ${focusRing}`}
             >
-              {link.label}
-            </Link>
-          ))}
-          <a
-            href={phoneHref}
-            onClick={onClose}
-            className={`rounded-lg px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 ${focusRing}`}
-          >
-            Ring {clinic.contact.phoneDisplay}
-          </a>
-        </nav>
+              Ring {clinic.contact.phoneDisplay}
+            </a>
+          </nav>
+        </div>
       </div>
     </div>
   );

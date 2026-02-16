@@ -65,9 +65,9 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition ${focusRing} px-1 py-0.5 ${
+                  className={`relative text-sm font-medium transition ${focusRing} px-1 pb-1 ${
                     isActive(pathname, link.href)
-                      ? "text-gray-900 underline underline-offset-8 decoration-2 decoration-primary-600"
+                      ? "text-gray-900 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-primary-700"
                       : "text-gray-700 hover:text-gray-900"
                   }`}
                 >
