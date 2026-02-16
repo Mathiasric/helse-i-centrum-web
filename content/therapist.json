@@ -32,6 +32,7 @@
     {
       "id": "marcus-smavik-dasa",
       "name": "Marcus Småvik Dasa",
+      "bookingUrl": "https://timebestilling.aspit.no/#/p2755/main",
       "role": "Fysioterapeut i spesialisering i manuellterapi",
       "agreement": "Kommunal driftsavtale",
       "education": [
@@ -74,19 +75,26 @@
       "education": ["Doktorgrad innen behandling av langvarige muskel- og skjelettplager", "Førsteamanuensis ved Universitetet i Bergen"],
       "summary": "Kjartan Vibe Fersum er manuellterapeut med doktorgrad innen behandling av langvarige muskel- og skjelettplager. Han kombinerer over 20 års klinisk erfaring med forskning og undervisning som førsteamanuensis ved Universitetet i Bergen.",
       "professionalProfile": "Kjartan Vibe Fersum er manuellterapeut med doktorgrad innen behandling av langvarige muskel- og skjelettplager. Han kombinerer over 20 års klinisk erfaring med forskning og undervisning som førsteamanuensis ved Universitetet i Bergen. Hans arbeid har hatt som mål å forstå hvorfor smerter vedvarer – og hva som faktisk bidrar til varig bedring.\n\nHan arbeider særlig med personer som har hatt rygg-, nakke- eller andre muskel- og skjelettplager over tid, ofte etter at tidligere behandling ikke har gitt ønsket effekt. Konsultasjonene er grundige og helhetlige, med fokus på sammenhengen mellom bevegelse, belastning, stress, søvn og livssituasjon.\n\nKjartan har også et særlig engasjement for kvinnehelse, inkludert smerter og plager knyttet til overgangsalder. Mange kvinner opplever endringer i kroppen i denne fasen – med økt smertefølsomhet, stivhet, redusert søvn og energinivå. Her kombinerer han oppdatert kunnskap om hormonelle endringer med en helhetlig forståelse av smerte og funksjon.\n\nMålet er ikke bare symptomlindring, men økt trygghet, forståelse og mestring – slik at du kan fungere bedre i hverdagen og oppleve mer kontroll over egen helse.\n\nØnsker du en grundig vurdering og en behandling basert på både forskning og lang klinisk erfaring, er du velkommen til å ta kontakt.",
-      "focusAreas": ["Langvarige muskel- og skjelettplager", "Rygg og nakke", "Kvinnehelse og overgangsalder"],
+      "focusAreas": ["Langvarige smerter", "Rygg og nakke", "Kvinnehelse"],
       "image": "/content/image/terapeut_kjartan.png"
     },
     {
-      "id": "placeholder-5",
-      "name": "Informasjon kommer snart",
-      "role": "",
-      "agreement": "",
-      "education": [],
-      "summary": "Informasjon kommer snart.",
-      "professionalProfile": "Informasjon kommer snart.",
-      "focusAreas": [],
-      "image": "/content/image/Inngang_klinikk_v2.png"
+      "id": "anine-vibe-simonsen",
+      "name": "Anine Vibe Simonsen",
+      "role": "Manuellterapeut",
+      "agreement": "Kommunal driftsavtale",
+      "education": [
+        "Fysioterapeut",
+        "Master i manuellterapi"
+      ],
+      "summary": "Anine er manuellterapeut med over 20 års klinisk erfaring. Hun behandler hele spekteret av muskel- og skjelettplager og har særlig fordypet seg i kvinnehelse, inkludert smertetilstander relatert til bekken og bekkenbunn.",
+      "professionalProfile": "Anine er utdannet fysioterapeut og fullførte master i manuellterapi i 2001. Som manuellterapeut har hun sykmeldingsrett og henvisningsrett til legespesialist og bildediagnostikk, noe som sikrer pasientene en helhetlig, effektiv og faglig trygg oppfølging.\n\nHun har driftsavtale og arbeider 100 % klinisk ved instituttet. I tillegg underviser hun på fysioterapiutdanningen og er veileder for studenter på masternivå.\n\nMed over 20 års klinisk erfaring har hun utviklet en solid og nyansert forståelse av samspillet mellom kropp, belastning og livssituasjon. Hun kombinerer manuellterapi med kompetanse innen kognitiv funksjonsrettet tilnærming og videreutdanning i kognitiv terapi.\n\nAnine behandler hele spekteret av muskel- og skjelettplager, fra akutte til langvarige tilstander. Hun har særlig fordypet seg i kvinnehelse, inkludert ulike faser av kvinnelivet og smertetilstander relatert til bekken og bekkenbunn.",
+      "focusAreas": [
+        "Langvarige smerter",
+        "Kvinnehelse",
+        "Kognitiv tilnærming"
+      ],
+      "image": "/content/image/terapeut_anine.png"
     }
   ]
 }

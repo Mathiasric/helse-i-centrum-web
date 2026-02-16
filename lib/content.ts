@@ -66,18 +66,18 @@ export interface Therapist {
 
 const therapistImageMap: Record<string, string> = {
   "magnus-richardsen": "/content/image/terapeut_magnus.png",
-  "marcus-smavik-dasa": "/content/image/terapeut_marcus.png",
+  "marcus-smavik-dasa": "/content/image/terapeut_marcus_v2.png",
   "eirik-berge": "/content/image/Cropped_eirik.png",
   "kjartan-vibe-fersum": "/content/image/terapeut_kjartan_v3.png",
-  "placeholder-5": "/content/image/Inngang_klinikk_v2.png",
+  "anine-vibe-simonsen": "/content/image/terapeut_anine.png",
 };
 
 const therapistImagePosition: Record<string, string> = {
   "magnus-richardsen": "center 35%",
-  "marcus-smavik-dasa": "center 82%",
+  "marcus-smavik-dasa": "center 30%",
   "eirik-berge": "center",
   "kjartan-vibe-fersum": "center 25%",
-  "placeholder-5": "center 35%",
+  "anine-vibe-simonsen": "center 40%",
 };
 
 export function getClinic(): Clinic {
