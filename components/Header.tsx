@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { getClinic, getTherapists } from "@/lib/content";
 import { BookingButton } from "./BookingButton";
 import { MobileNavDrawer } from "./MobileNavDrawer";
@@ -23,9 +24,15 @@ const navLinks = [
   { href: "/kontakt", label: "Kontakt" },
 ];
 
+function isActive(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -58,7 +65,11 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium text-gray-700 transition hover:text-gray-900 ${focusRing} px-1 py-0.5`}
+                  className={`text-sm font-medium transition ${focusRing} px-1 py-0.5 ${
+                    isActive(pathname, link.href)
+                      ? "text-gray-900 underline underline-offset-8 decoration-2 decoration-primary-600"
+                      : "text-gray-700 hover:text-gray-900"
+                  }`}
                 >
                   {link.label}
                 </Link>
