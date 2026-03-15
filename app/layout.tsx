@@ -3,7 +3,7 @@ import { getClinic } from "@/lib/content";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ClinicSchema } from "@/components/ClinicSchema";
+import { ClinicSchema, SiteNavigationSchema } from "@/components/ClinicSchema";
 
 const clinic = getClinic();
 
@@ -41,6 +41,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <ClinicSchema />
+        <SiteNavigationSchema />
         <Header />
         <main>{children}</main>
         <Footer />

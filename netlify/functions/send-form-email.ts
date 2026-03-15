@@ -35,12 +35,17 @@ function buildHtml(data: {
   email: string;
   phone?: string;
   fodselsdatoFormatted?: string;
+  therapist?: string;
   message: string;
 }): string {
   const telefon = data.phone?.trim() || "–";
   const fodselsdatoRow =
     data.fodselsdatoFormatted !== undefined && data.fodselsdatoFormatted !== ""
       ? `<tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Fødselsdato</td><td style="padding: 0.25rem 0;">${escapeHtml(data.fodselsdatoFormatted!)}</td></tr>`
+      : "";
+  const therapistRow =
+    data.therapist
+      ? `<tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Ønsket terapeut</td><td style="padding: 0.25rem 0;">${escapeHtml(data.therapist)}</td></tr>`
       : "";
   return `
 <!DOCTYPE html>
@@ -53,6 +58,7 @@ function buildHtml(data: {
     <tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">E-post</td><td style="padding: 0.25rem 0;">${escapeHtml(data.email)}</td></tr>
     <tr><td style="padding: 0.25rem 0.5rem 0.25rem 0; font-weight: 600;">Telefon</td><td style="padding: 0.25rem 0;">${escapeHtml(telefon)}</td></tr>
     ${fodselsdatoRow}
+    ${therapistRow}
   </table>
   <p style="font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem;">Melding:</p>
   <p style="margin: 0; margin-top: 0.5rem; white-space: pre-line;">${escapeHtml(data.message)}</p>
@@ -85,6 +91,8 @@ export const handler: Handler = async (event) => {
     const phone = data.phone != null ? String(data.phone).trim() : "";
     const fodselsdato =
       data.fodselsdato != null ? String(data.fodselsdato).trim() : "";
+    const therapist =
+      data.therapist != null ? String(data.therapist).trim() : "";
 
     if (!name) {
       return {
@@ -127,17 +135,22 @@ export const handler: Handler = async (event) => {
 
     const fodselsdatoNorsk = fodselsdatoTilNorsk(fodselsdato);
     const msgLower = message.toLowerCase();
-    const subject =
+    const isBooking =
       msgLower.includes("time") ||
       msgLower.includes("bestill") ||
-      msgLower.includes("booking")
-        ? "Timebestilling – Helse i Centrum"
-        : "Ny henvendelse – Helse i Centrum";
+      msgLower.includes("booking") ||
+      therapist !== "";
+    const therapistSuffix = therapist ? ` til ${therapist}` : "";
+    const subject = isBooking
+      ? `Timebestilling fra ${name}${therapistSuffix} – Helse i Centrum`
+      : `Ny henvendelse fra ${name} – Helse i Centrum`;
 
     const fodselsdatoLinje =
       fodselsdatoNorsk !== ""
         ? `Fødselsdato: ${fodselsdatoNorsk}\n`
         : "";
+    const therapistLinje =
+      therapist !== "" ? `Ønsket terapeut: ${therapist}\n` : "";
 
     const text = `
 Ny henvendelse fra nettsiden
@@ -145,7 +158,7 @@ Ny henvendelse fra nettsiden
 Navn: ${name}
 E-post: ${email}
 Telefon: ${phone || "–"}
-${fodselsdatoLinje}Melding:
+${fodselsdatoLinje}${therapistLinje}Melding:
 ${message}
 
 ---
@@ -168,6 +181,7 @@ Sendt fra kontaktskjema – ${SITE_URL} – ${norskDatoTidFooter()}
         email,
         phone,
         fodselsdatoFormatted: fodselsdatoNorsk || undefined,
+        therapist: therapist || undefined,
         message,
       }),
     });

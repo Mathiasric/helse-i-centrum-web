@@ -7,7 +7,11 @@ const focusRing =
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm() {
+interface ContactFormProps {
+  therapistNames?: string[];
+}
+
+export function ContactForm({ therapistNames = [] }: ContactFormProps) {
   const [formState, setFormState] = useState<FormState>("idle");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -30,13 +34,14 @@ export function ContactForm() {
     const email = String(formData.get("email") ?? "");
     const phone = String(formData.get("phone") ?? "");
     const fodselsdato = String(formData.get("fodselsdato") ?? "");
+    const therapist = String(formData.get("therapist") ?? "");
     const message = String(formData.get("message") ?? "");
 
     try {
       await fetch("/.netlify/functions/send-form-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, fodselsdato, message }),
+        body: JSON.stringify({ name, email, phone, fodselsdato, therapist, message }),
       });
 
       const response = await fetch("/__forms.html", {
@@ -145,6 +150,24 @@ export function ContactForm() {
           className={`mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 sm:text-sm disabled:opacity-60 ${focusRing}`}
         />
       </div>
+      {therapistNames.length > 0 && (
+        <div>
+          <label htmlFor="contact-therapist" className="block text-sm font-medium text-gray-900">
+            Ønsket terapeut
+          </label>
+          <select
+            id="contact-therapist"
+            name="therapist"
+            disabled={formState === "submitting"}
+            className={`mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 sm:text-sm disabled:opacity-60 ${focusRing}`}
+          >
+            <option value="">Ingen preferanse</option>
+            {therapistNames.map((name) => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </select>
+        </div>
+      )}
       <div>
         <label htmlFor="contact-message" className="block text-sm font-medium text-gray-900">
           Melding <span className="text-red-500">*</span>

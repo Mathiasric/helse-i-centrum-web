@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { getClinic } from "@/lib/content";
+import { getClinic, getTherapists } from "@/lib/content";
 import { ContactSection } from "@/components/ContactSection";
 import { ContactForm } from "@/components/ContactForm";
+import { BreadcrumbSchema } from "@/components/ClinicSchema";
 
 const clinic = getClinic();
+const therapistNames = getTherapists().map((t) => t.name);
 
 const SITE_URL = "https://hicbergen.no";
 
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/kontakt`,
     siteName: "Helse i Centrum",
     type: "website",
-    images: [{ url: "/content/image/Hero_img.png", width: 1200, height: 630, alt: "Helse i Centrum – Kontakt i Bergen" }],
+    images: [{ url: `${SITE_URL}/content/image/Hero_img.png`, width: 1200, height: 630, alt: "Helse i Centrum – Kontakt i Bergen" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -32,28 +34,15 @@ export const metadata: Metadata = {
   },
 };
 
-const contactPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Helse i Centrum",
-  url: `${SITE_URL}/kontakt`,
-  telephone: "+4755900680",
-  email: "hicbergen@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Markeveien 4C",
-    addressLocality: "Bergen",
-    postalCode: "5012",
-    addressCountry: "NO",
-  },
-};
 
 export default function KontaktPage() {
   return (
     <div className="min-w-0 overflow-x-hidden bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      <BreadcrumbSchema
+        items={[
+          { name: "Hjem", url: SITE_URL },
+          { name: "Kontakt", url: `${SITE_URL}/kontakt` },
+        ]}
       />
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
@@ -73,7 +62,7 @@ export default function KontaktPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-start">
             {/* Venstre på desktop, under på mobil */}
-            <div className="order-2 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm lg:order-1">
+            <div className="order-2 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm lg:order-1 lg:sticky lg:top-24">
               <div className="relative aspect-[4/3.75] w-full">
                 <Image
                   src="/content/image/Inngang.png"
@@ -97,9 +86,9 @@ export default function KontaktPage() {
                 Ønsker du å bestille time? Skriv det i meldingen og oppgi fødselsdato og telefon.
               </p>
               <div className="mt-6">
-                <ContactForm />
+                <ContactForm therapistNames={therapistNames} />
                 <p className="mt-4 text-xs leading-relaxed text-gray-500">
-                  Vi bruker opplysningene dine kun for å svare på henvendelsen. Les personvernerklæringen.
+                  Vi bruker opplysningene dine kun for å svare på henvendelsen.
                 </p>
               </div>
             </div>

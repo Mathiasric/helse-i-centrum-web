@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://hicbergen.no/terapeuter",
     siteName: "Helse i Centrum",
     type: "website",
-    images: [{ url: "/content/image/Hero_img.png", width: 1200, height: 630, alt: "Terapeuter – Helse i Centrum Bergen" }],
+    images: [{ url: "https://hicbergen.no/content/image/Hero_img.png", width: 1200, height: 630, alt: "Terapeuter – Helse i Centrum Bergen" }],
   },
   twitter: {
     card: "summary_large_image",

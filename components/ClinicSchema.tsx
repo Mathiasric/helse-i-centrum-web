@@ -50,6 +50,26 @@ export function ClinicSchema() {
   );
 }
 
+export function SiteNavigationSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    name: ["Hjem", "Terapeuter", "Kontakt"],
+    url: [
+      SITE_URL,
+      `${SITE_URL}/terapeuter`,
+      `${SITE_URL}/kontakt`,
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function BreadcrumbSchema({ items }: { items: { name: string; url: string }[] }) {
   const schema = {
     "@context": "https://schema.org",
