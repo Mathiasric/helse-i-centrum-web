@@ -38,16 +38,10 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
     const message = String(formData.get("message") ?? "");
 
     try {
-      await fetch("/.netlify/functions/send-form-email", {
+      const response = await fetch("/.netlify/functions/send-form-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, phone, fodselsdato, therapist, message }),
-      });
-
-      const response = await fetch("/__forms.html", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: payload.toString(),
       });
 
       if (response.ok) {
