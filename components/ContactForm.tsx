@@ -38,17 +38,25 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
     const message = String(formData.get("message") ?? "");
 
     try {
-      const response = await fetch("/.netlify/functions/send-form-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, fodselsdato, therapist, message }),
-      });
+      // To uavhengige kanaler. Begge forsøkes alltid; skjemaet lykkes hvis én kommer fram.
+      const [netlifyResult, resendResult] = await Promise.allSettled([
+        fetch("/__forms.html", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: payload.toString(),
+        }),
+        fetch("/.netlify/functions/send-form-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, phone, fodselsdato, therapist, message }),
+        }),
+      ]);
 
-      if (response.ok) {
-        setFormState("success");
-      } else {
-        setFormState("error");
-      }
+      const delivered =
+        (netlifyResult.status === "fulfilled" && netlifyResult.value.ok) ||
+        (resendResult.status === "fulfilled" && resendResult.value.ok);
+
+      setFormState(delivered ? "success" : "error");
     } catch {
       setFormState("error");
     }
@@ -89,6 +97,13 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
       className="space-y-4"
     >
       <input type="hidden" name="form-name" value="kontakt-melding" />
+      {/* Honeypot — skjult for mennesker, boter fyller den ut og blir filtrert bort av Netlify */}
+      <p className="hidden">
+        <label>
+          La dette feltet stå tomt:{" "}
+          <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
       <div>
         <label htmlFor="contact-name" className="block text-sm font-medium text-gray-900">
           Navn <span className="text-red-500">*</span>

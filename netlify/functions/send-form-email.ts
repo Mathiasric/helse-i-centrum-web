@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const CONTACT_TO_EMAIL =
   process.env.CONTACT_TO_EMAIL || process.env.FORM_TO_EMAIL || "";
 const CONTACT_FROM_EMAIL =
-  process.env.CONTACT_FROM_EMAIL || "no-reply@botpartner.no";
+  process.env.CONTACT_FROM_EMAIL || "hei@provant.no";
 const SITE_URL = process.env.URL || "https://hicbergen.no";
 
 function norskDatoTidFooter(): string {
@@ -170,7 +170,7 @@ Sendt fra kontaktskjema – ${SITE_URL} – ${norskDatoTidFooter()}
       : CONTACT_FROM_EMAIL.trim();
     const from = `Helse i Centrum (Nettside) <${fromEmail}>`;
 
-    await resend.emails.send({
+    const { data: sent, error: sendError } = await resend.emails.send({
       from,
       to: [CONTACT_TO_EMAIL],
       replyTo: email,
@@ -185,6 +185,16 @@ Sendt fra kontaktskjema – ${SITE_URL} – ${norskDatoTidFooter()}
         message,
       }),
     });
+
+    if (sendError) {
+      console.error("Resend error:", sendError);
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ ok: false, error: sendError.message }),
+      };
+    }
+
+    console.log("Resend accepted:", sent?.id);
 
     return {
       statusCode: 200,
