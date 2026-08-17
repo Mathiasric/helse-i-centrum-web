@@ -45,7 +45,7 @@ export function Header() {
           >
             <span className="flex h-9 w-9 overflow-hidden rounded-full sm:h-10 sm:w-10">
               <Image
-                src="/content/image/logo_v2.png"
+                src="/content/image/logo_mark_v3.png"
                 alt="Helse i Centrum – Fysioterapi Bergen"
                 width={40}
                 height={40}

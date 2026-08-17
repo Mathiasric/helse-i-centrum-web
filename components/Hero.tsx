@@ -10,7 +10,7 @@ const focusRing =
 
 export function Hero() {
   return (
-    <section className="relative min-h-[70vh] sm:min-h-[75vh]">
+    <section className="relative min-h-[70vh] sm:min-h-[calc(100vh-65px)]">
       <div className="absolute inset-0">
         <Image
           src="/content/image/Hero_img.png"

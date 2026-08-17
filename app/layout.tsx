@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   description: clinic.summary,
   icons: {
     icon: [
-      { url: "/content/favicon/favicon_v2.ico", sizes: "any" },
-      { url: "/content/favicon/favicon_v2.svg", type: "image/svg+xml" },
-      { url: "/content/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/content/favicon/favicon_v3.ico", sizes: "any" },
+      { url: "/content/favicon/favicon_v3-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/content/favicon/favicon_v3-96.png", sizes: "96x96", type: "image/png" },
     ],
-    apple: "/content/favicon/apple-touch-icon_v2.png",
+    apple: "/content/favicon/apple-touch-icon_v3.png",
   },
   manifest: "/content/favicon/site.webmanifest",
 };
@@ -32,13 +32,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nb">
-      <head>
-        <link rel="icon" href="/content/favicon/favicon_v2.ico" sizes="any" />
-        <link rel="icon" type="image/svg+xml" href="/content/favicon/favicon_v2.svg" />
-        <link rel="apple-touch-icon" href="/content/favicon/apple-touch-icon_v2.png" />
-        <link rel="manifest" href="/content/favicon/site.webmanifest" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/content/favicon/favicon-96x96.png" />
-      </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <ClinicSchema />
         <SiteNavigationSchema />
