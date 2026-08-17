@@ -15,10 +15,12 @@ function norskDatoTidFooter(): string {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
+    timeZone: "Europe/Oslo",
   }).format(dt);
   const t = new Intl.DateTimeFormat("nb-NO", {
     hour: "2-digit",
     minute: "2-digit",
+    timeZone: "Europe/Oslo",
   }).format(dt);
   return `${d} kl. ${t}`;
 }
