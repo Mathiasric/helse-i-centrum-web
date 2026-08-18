@@ -20,7 +20,7 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <Link href="/" className={`inline-flex shrink-0 w-fit ${focusRing}`} aria-label="Hjem">
               <Image
-                src="/content/image/logo_v2.png"
+                src="/content/image/logo_mark_v3.png"
                 alt={`${clinic.name} logo`}
                 width={40}
                 height={40}
