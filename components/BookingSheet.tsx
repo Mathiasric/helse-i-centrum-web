@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { getClinic, getTherapists } from "@/lib/content";
+import { getClinic, getTherapists, getBookingHref } from "@/lib/content";
 
 const clinic = getClinic();
 const therapists = getTherapists();
-const therapistsWithBooking = therapists.filter((t) => t.bookingUrl);
-const hasBookingUrls = therapistsWithBooking.length > 0;
+const hasBookingUrls = therapists.some((t) => t.bookingUrl);
 const phoneHref = `tel:${clinic.contact.phoneE164}`;
 
 const focusRing =
@@ -46,18 +45,35 @@ export function BookingSheet({ open, onClose }: BookingSheetProps) {
           </h3>
           <div className="mt-4 flex flex-col gap-2">
             {hasBookingUrls ? (
-              therapistsWithBooking.map((t) => (
+              <>
+                {therapists.map((t) => {
+                  const online = !!t.bookingUrl;
+                  return (
+                    <a
+                      key={t.id}
+                      href={getBookingHref(t)}
+                      target={online ? "_blank" : undefined}
+                      rel={online ? "noopener noreferrer" : undefined}
+                      onClick={onClose}
+                      className={`flex items-center justify-between gap-3 rounded-lg bg-primary-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+                    >
+                      <span>{t.name}</span>
+                      {online && (
+                        <span className="shrink-0 rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium">
+                          Online
+                        </span>
+                      )}
+                    </a>
+                  );
+                })}
                 <a
-                  key={t.id}
-                  href={t.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/terapeuter"
                   onClick={onClose}
-                  className={`flex items-center justify-between rounded-lg bg-primary-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+                  className={`mt-1 rounded-lg px-4 py-3 text-center text-base font-medium text-primary-600 transition hover:bg-primary-50 ${focusRing}`}
                 >
-                  Bestill hos {t.name.split(" ")[0]}
+                  Se alle terapeuter →
                 </a>
-              ))
+              </>
             ) : (
               <a
                 href={phoneHref}

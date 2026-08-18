@@ -25,11 +25,10 @@ function isActive(pathname: string, href: string): boolean {
 interface MobileNavDrawerProps {
   open: boolean;
   onClose: () => void;
-  useTerapeuterLink?: boolean;
   onRequestBooking?: () => void;
 }
 
-export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBooking }: MobileNavDrawerProps) {
+export function MobileNavDrawer({ open, onClose, onRequestBooking }: MobileNavDrawerProps) {
   const pathname = usePathname();
 
   const handleEsc = useCallback(
@@ -89,15 +88,7 @@ export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBoo
 
         <div className="px-6 py-6 space-y-6">
           {/* Bestill time – øverst, kompakt CTA */}
-          {useTerapeuterLink ? (
-            <Link
-              href="/terapeuter"
-              onClick={onClose}
-              className={`block w-full rounded-lg bg-primary-700 py-3 text-center text-base font-semibold text-white transition hover:bg-primary-800 ${focusRing}`}
-            >
-              Bestill time
-            </Link>
-          ) : onRequestBooking ? (
+          {onRequestBooking && (
             <button
               type="button"
               onClick={() => {
@@ -108,7 +99,7 @@ export function MobileNavDrawer({ open, onClose, useTerapeuterLink, onRequestBoo
             >
               Bestill time
             </button>
-          ) : null}
+          )}
 
           {/* Nav links – stram og ryddig */}
           <nav className="flex flex-col" aria-label="Hovednavigasjon">

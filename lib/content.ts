@@ -96,3 +96,12 @@ export function getTherapists(): Therapist[] {
 export function getTherapistById(id: string): Therapist | undefined {
   return getTherapists().find((t) => t.id === id);
 }
+
+/**
+ * Where "Bestill time" should send someone for a given therapist.
+ * Online booking when they have it, otherwise their card on /terapeuter,
+ * where both the phone number and the form are one step away.
+ */
+export function getBookingHref(therapist: Therapist): string {
+  return therapist.bookingUrl ?? `/terapeuter#${therapist.id}`;
+}

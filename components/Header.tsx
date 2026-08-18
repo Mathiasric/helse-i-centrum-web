@@ -11,9 +11,7 @@ import { BookingSheet } from "./BookingSheet";
 
 const clinic = getClinic();
 const therapists = getTherapists();
-const useTerapeuterLink = therapists.length >= 3;
 const hasBookingUrls = therapists.some((t) => t.bookingUrl);
-const firstBookingUrl = therapists[0]?.bookingUrl;
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-md";
@@ -77,31 +75,15 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
-              {useTerapeuterLink ? (
-                <Link
-                  href="/terapeuter"
-                  className={`inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-                >
-                  Bestill time
-                </Link>
-              ) : hasBookingUrls ? (
+              {hasBookingUrls ? (
                 <>
-                  {therapists.length === 1 && firstBookingUrl ? (
-                    <Link
-                      href="/kontakt#skjema"
-                      className={`md:hidden inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-                    >
-                      Bestill time
-                    </Link>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => setBookingOpen(true)}
-                      className={`md:hidden inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
-                    >
-                      Bestill time
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => setBookingOpen(true)}
+                    className={`md:hidden inline-flex shrink-0 items-center justify-center rounded-lg bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
+                  >
+                    Bestill time
+                  </button>
                   <div className="hidden md:block">
                     <BookingButton />
                   </div>
@@ -125,19 +107,13 @@ export function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
-
-              {!useTerapeuterLink && !hasBookingUrls && (
-                <div className="hidden md:block">
-                  <BookingButton />
-                </div>
-              )}
             </div>
           </div>
         </div>
       </header>
 
-      <MobileNavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} useTerapeuterLink={useTerapeuterLink} onRequestBooking={!useTerapeuterLink && hasBookingUrls ? () => setBookingOpen(true) : undefined} />
-      {!useTerapeuterLink && hasBookingUrls && <BookingSheet open={bookingOpen} onClose={() => setBookingOpen(false)} />}
+      <MobileNavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} onRequestBooking={hasBookingUrls ? () => setBookingOpen(true) : undefined} />
+      {hasBookingUrls && <BookingSheet open={bookingOpen} onClose={() => setBookingOpen(false)} />}
     </>
   );
 }
