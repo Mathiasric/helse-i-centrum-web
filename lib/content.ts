@@ -65,11 +65,11 @@ export interface Therapist {
 }
 
 const therapistImageMap: Record<string, string> = {
-  "magnus-richardsen": "/content/image/terapeut_magnus.png",
-  "marcus-smavik-dasa": "/content/image/terapeut_marcus_v2.png",
-  "eirik-berge": "/content/image/Cropped_eirik.png",
-  "kjartan-vibe-fersum": "/content/image/terapeut_kjartan_v3.png",
-  "anine-vibe-simonsen": "/content/image/terapeut_anine.png",
+  "magnus-richardsen": "/content/image/terapeut_magnus.webp",
+  "marcus-smavik-dasa": "/content/image/terapeut_marcus.webp",
+  "eirik-berge": "/content/image/terapeut_eirik.webp",
+  "kjartan-vibe-fersum": "/content/image/terapeut_kjartan.webp",
+  "anine-vibe-simonsen": "/content/image/terapeut_anine.webp",
 };
 
 const therapistImagePosition: Record<string, string> = {

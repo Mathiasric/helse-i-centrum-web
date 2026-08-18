@@ -21,7 +21,7 @@ function TherapistModalImage({ therapist }: { therapist: Therapist }) {
         <img
           src={therapist.image}
           alt=""
-          className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+          className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
         />
       ) : (
@@ -29,7 +29,7 @@ function TherapistModalImage({ therapist }: { therapist: Therapist }) {
           src={therapist.image}
           alt=""
           fill
-          className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+          className="h-full w-full object-cover"
           style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
           sizes="(max-width: 640px) 100vw, 400px"
         />
@@ -203,7 +203,7 @@ export function TherapistPageCard({ therapist }: TherapistPageCardProps) {
               <img
                 src={therapist.image}
                 alt={`${therapist.name} – Helse i Centrum Bergen`}
-                className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+                className="absolute inset-0 h-full w-full object-cover"
                 style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
                 loading="lazy"
               />
@@ -212,7 +212,7 @@ export function TherapistPageCard({ therapist }: TherapistPageCardProps) {
                 src={therapist.image}
                 alt={`${therapist.name} – Helse i Centrum Bergen`}
                 fill
-                className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+                className="h-full w-full object-cover"
                 style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
                 sizes="(max-width: 768px) 360px, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"

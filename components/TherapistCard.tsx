@@ -85,7 +85,7 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
             <img
               src={therapist.image}
               alt={`${therapist.name} – Helse i Centrum Bergen`}
-              className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+              className="absolute inset-0 h-full w-full object-cover"
               style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
               loading="lazy"
             />
@@ -94,7 +94,7 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
               src={therapist.image}
               alt={`${therapist.name} – Helse i Centrum Bergen`}
               fill
-              className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+              className="h-full w-full object-cover"
               style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
               sizes="208px"
               loading="lazy"
@@ -135,7 +135,7 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
             <img
               src={therapist.image}
               alt={`${therapist.name} – Helse i Centrum Bergen`}
-              className={`absolute inset-0 h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+              className="absolute inset-0 h-full w-full object-cover"
               style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
               loading="lazy"
             />
@@ -144,7 +144,7 @@ export function TherapistCard({ therapist, variant = "preview" }: TherapistCardP
               src={therapist.image}
               alt={`${therapist.name} – Helse i Centrum Bergen`}
               fill
-              className={`h-full w-full object-cover ${therapist.id === "eirik-berge" ? "scale-[1.35]" : ""}`}
+              className="h-full w-full object-cover"
               style={{ objectPosition: therapist.imagePosition ?? "center 35%" }}
               sizes="360px"
               loading="lazy"
