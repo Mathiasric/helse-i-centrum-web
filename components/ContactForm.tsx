@@ -112,6 +112,7 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
           id="contact-name"
           name="name"
           type="text"
+          autoComplete="name"
           required
           disabled={formState === "submitting"}
           className={`mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-primary-500 sm:text-sm disabled:opacity-60 ${focusRing}`}
@@ -126,6 +127,8 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
           id="contact-email"
           name="email"
           type="email"
+          autoComplete="email"
+          inputMode="email"
           required
           disabled={formState === "submitting"}
           className={`mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-primary-500 sm:text-sm disabled:opacity-60 ${focusRing}`}
@@ -140,6 +143,8 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
           id="contact-phone"
           name="phone"
           type="tel"
+          autoComplete="tel"
+          inputMode="tel"
           required
           disabled={formState === "submitting"}
           className={`mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-primary-500 sm:text-sm disabled:opacity-60 ${focusRing}`}
@@ -154,6 +159,7 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
           id="contact-fodselsdato"
           name="fodselsdato"
           type="date"
+          autoComplete="bday"
           required
           disabled={formState === "submitting"}
           className={`mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 sm:text-sm disabled:opacity-60 ${focusRing}`}

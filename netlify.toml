@@ -1,3 +1,22 @@
 [build]
   command = "npm run build"
   publish = ".next"
+
+# Filnavn er versjonerte (logo_v2, _v3, terapeut_kjartan_v3), så innholdet
+# bak en gitt URL endres ikke. Endres et bilde, bytt filnavn.
+[[headers]]
+  for = "/content/image/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/content/favicon/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"

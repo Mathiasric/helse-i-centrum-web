@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,10 +51,15 @@ function BioModal({
     .split(/\n+/)
     .filter((p) => p.trim());
 
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    const opener = document.activeElement as HTMLElement | null;
+    panelRef.current?.focus();
     return () => {
       document.body.style.overflow = "";
+      opener?.focus();
     };
   }, []);
 
@@ -83,6 +88,7 @@ function BioModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      role="dialog"
       aria-modal="true"
       aria-label={`Om ${therapist.name}`}
     >
@@ -92,7 +98,9 @@ function BioModal({
         onClick={onClose}
       />
       <div
-        className="relative z-10 mx-auto flex max-h-[90vh] w-full max-w-[760px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-4 shadow-xl sm:p-6"
+        ref={panelRef}
+        tabIndex={-1}
+        className="relative z-10 mx-auto flex max-h-[90vh] w-full max-w-[760px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white p-4 shadow-xl outline-none sm:p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-end border-b border-gray-100 pb-2">
