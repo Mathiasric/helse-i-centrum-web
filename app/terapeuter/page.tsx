@@ -8,7 +8,7 @@ const clinic = getClinic();
 const SITE_URL = "https://hicbergen.no";
 
 export const metadata: Metadata = {
-  title: "Terapeuter | Fysioterapi i Bergen sentrum | Helse i Centrum",
+  title: "Terapeuter – Fysioterapi i Bergen sentrum",
   description:
     "Se våre terapeuter i Bergen sentrum. Finn riktig behandler og bestill time online via Physica.",
   alternates: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://hicbergen.no/terapeuter",
     siteName: "Helse i Centrum",
     type: "website",
-    images: [{ url: "https://hicbergen.no/content/image/Hero_img.png", width: 1200, height: 630, alt: "Terapeuter – Helse i Centrum Bergen" }],
+    images: [{ url: "https://hicbergen.no/content/image/og-hero.jpg", width: 1200, height: 630, alt: "Terapeuter – Helse i Centrum Bergen" }],
   },
   twitter: {
     card: "summary_large_image",

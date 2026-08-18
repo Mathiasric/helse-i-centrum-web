@@ -11,7 +11,7 @@ const therapistNames = getTherapists().map((t) => t.name);
 const SITE_URL = "https://hicbergen.no";
 
 export const metadata: Metadata = {
-  title: "Kontakt & adkomst | Helse i Centrum – Bergen",
+  title: "Kontakt & adkomst – Bergen",
   description:
     "Adresse, åpningstider og kontaktinformasjon for Helse i Centrum i Bergen. Se kart, finn inngangen i Markeveien 4C og send oss en melding.",
   alternates: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/kontakt`,
     siteName: "Helse i Centrum",
     type: "website",
-    images: [{ url: `${SITE_URL}/content/image/Hero_img.png`, width: 1200, height: 630, alt: "Helse i Centrum – Kontakt i Bergen" }],
+    images: [{ url: `${SITE_URL}/content/image/og-hero.jpg`, width: 1200, height: 630, alt: "Helse i Centrum – Kontakt i Bergen" }],
   },
   twitter: {
     card: "summary_large_image",
