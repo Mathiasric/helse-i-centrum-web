@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import { getClinic, getTherapists } from "@/lib/content";
 
 const clinic = getClinic();
@@ -48,14 +47,16 @@ export function BookingSheet({ open, onClose }: BookingSheetProps) {
           <div className="mt-4 flex flex-col gap-2">
             {hasBookingUrls ? (
               therapistsWithBooking.map((t) => (
-                <Link
+                <a
                   key={t.id}
-                  href="/kontakt#skjema"
+                  href={t.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={onClose}
                   className={`flex items-center justify-between rounded-lg bg-primary-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
                 >
                   Bestill hos {t.name.split(" ")[0]}
-                </Link>
+                </a>
               ))
             ) : (
               <a

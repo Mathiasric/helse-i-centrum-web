@@ -33,6 +33,15 @@ export const metadata: Metadata = {
 export default function TherapistsPage() {
   const therapists = getTherapists();
 
+  // Only worth saying when the two groups actually differ.
+  const bookable = therapists.filter((t) => t.bookingUrl);
+  const bookableNames =
+    bookable.length > 0 && bookable.length < therapists.length
+      ? new Intl.ListFormat("nb-NO", { style: "long", type: "conjunction" }).format(
+          bookable.map((t) => t.name.split(" ")[0])
+        )
+      : "";
+
   return (
     <div className="bg-white">
       <BreadcrumbSchema
@@ -52,11 +61,17 @@ export default function TherapistsPage() {
           href="/kontakt#skjema"
           className="mt-4 inline-block text-sm font-medium text-primary-600 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded"
         >
-          Kontakt klinikken i Bergen →
+          Send oss en melding →
         </Link>
       </section>
 
       <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-24">
+        {bookableNames && (
+          <p className="mb-8 max-w-2xl text-sm text-gray-600">
+            {bookableNames} kan bookes direkte online. De øvrige avtaler time
+            på telefon eller via skjema.
+          </p>
+        )}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-6">
           {therapists.map((therapist, index) => (
             <div

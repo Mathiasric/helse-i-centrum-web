@@ -20,16 +20,16 @@ export default function NotFound() {
       </p>
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-4">
         <Link
-          href="/kontakt#skjema"
+          href="/terapeuter"
           className={`inline-flex items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-primary-700 ${focusRing}`}
         >
           Bestill time
         </Link>
         <Link
-          href="/terapeuter"
+          href="/kontakt#skjema"
           className={`inline-flex items-center justify-center rounded-lg border border-gray-300 px-6 py-3 text-base font-semibold text-gray-900 transition hover:bg-gray-50 ${focusRing}`}
         >
-          Se terapeuter
+          Send oss en melding
         </Link>
       </div>
       <p className="mt-8 text-sm text-gray-600">
