@@ -69,6 +69,20 @@ function buildHtml(data: {
 </html>`;
 }
 
+// Boter sender navn som "XTRWCHLLNcFUBsgdxlzkyqz": ett langt ord med tilfeldig store/små bokstaver.
+// Sammensatte ekte navn ("MacDonaldsson") følger Stor+små-mønsteret og slipper gjennom.
+function looksLikeBotName(name: string): boolean {
+  if (!/^[A-Za-z]{12,}$/.test(name)) return false;
+  if (/^([A-Z][a-z]+)+$/.test(name)) return false;
+  let caseSwitches = 0;
+  for (let i = 1; i < name.length; i++) {
+    const prevUpper = name[i - 1] === name[i - 1].toUpperCase();
+    const currUpper = name[i] === name[i].toUpperCase();
+    if (prevUpper !== currUpper) caseSwitches++;
+  }
+  return caseSwitches >= 3;
+}
+
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
@@ -95,6 +109,17 @@ export const handler: Handler = async (event) => {
       data.fodselsdato != null ? String(data.fodselsdato).trim() : "";
     const therapist =
       data.therapist != null ? String(data.therapist).trim() : "";
+
+    const botField = String(data["bot-field"] ?? "").trim();
+
+    // Spam svares med 200 så boten ikke prøver igjen, men sendes aldri videre.
+    if (botField || looksLikeBotName(name)) {
+      console.log("Spam filtered:", { name, honeypot: Boolean(botField) });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ ok: true }),
+      };
+    }
 
     if (!name) {
       return {

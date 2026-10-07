@@ -36,6 +36,7 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
     const fodselsdato = String(formData.get("fodselsdato") ?? "");
     const therapist = String(formData.get("therapist") ?? "");
     const message = String(formData.get("message") ?? "");
+    const botField = String(formData.get("bot-field") ?? "");
 
     try {
       // To uavhengige kanaler. Begge forsøkes alltid; skjemaet lykkes hvis én kommer fram.
@@ -48,7 +49,7 @@ export function ContactForm({ therapistNames = [] }: ContactFormProps) {
         fetch("/.netlify/functions/send-form-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, phone, fodselsdato, therapist, message }),
+          body: JSON.stringify({ name, email, phone, fodselsdato, therapist, message, "bot-field": botField }),
         }),
       ]);
 
